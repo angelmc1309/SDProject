@@ -1,3 +1,12 @@
+/*
+
+Autors:
+* Juan Cano Pradas
+* Nil Ballus Riu
+* David Rial Fígols
+
+ */
+
 package view;
 
 import javax.swing.*;
@@ -86,6 +95,7 @@ class FrmRegistre extends JDialog {
                 textPassword2.setText("");
             }
             else{
+                //TODO Cal cridar a Controller per afegir el nou usuari
                 String info = "Usuari afegit correctament";
                 JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
                 if (info.equals("Usuari afegit correctament"))

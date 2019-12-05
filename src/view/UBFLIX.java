@@ -219,6 +219,7 @@ public class UBFLIX extends JFrame{
      * Mètode que actualitza les sèries del catàleg
      */
     private void refreshListAll() {
+        //TODO Cal cridar a Controller per refescar les series
         String[] series = {"serie 1","serie 2", "serie 3"};
         listAll.setListData(series);
         refreshTemporades(series);
@@ -232,6 +233,7 @@ public class UBFLIX extends JFrame{
         popupMenuTemporades.clear();
         for (String serie: series) {
             JPopupMenu s = new JPopupMenu();
+            //TODO Cal cridar a Controller per refescar les temporades
             String[] temporades = {"temporada 1","temporada 2", "temporada 3"};
             for (String temporada: temporades) {
                 JMenu temp = new JMenu(temporada);
@@ -249,12 +251,14 @@ public class UBFLIX extends JFrame{
      * @param jm JMenu de l'episodi
      */
     private void refreshEpisodis(String serie, String temporada, JMenu jm) {
+        //TODO Cal cridar a Controller per refescar els episodis
         String[] episodis = {"episodi 1","episodi 2", "episodi 3"};
         for (String episodi: episodis) {
             String idSerie = "Id Serie";
             int numTemporada = Integer.parseInt(temporada.substring(10));
             int duracio = 30;
             int duracioVisualitzada = 0;
+            //TODO Cal cridar a Controller per obtenir les descripcions
             String descripcio = "Descripcio de l'episodi";
             JMenuItem ep = new JMenuItem(episodi);
             ep.addActionListener(new ActionListener() {
@@ -282,6 +286,7 @@ public class UBFLIX extends JFrame{
      * Mètode que actualitza les sèries de la llista MyList
      */
     private void refreshMyList() {
+        //TODO Cal cridar a Controller per refescar les series
         String[] series = {"serie 1", "serie 2", "serie 3"};
         listMyList.setListData(series);
     }
@@ -290,6 +295,7 @@ public class UBFLIX extends JFrame{
      * Mètode que actualitza les sèries de la llista Watched
      */
     private void refreshWatched() {
+        //TODO Cal cridar a Controller per refescar les series
         String[] series = {"serie 1", "serie 2", "serie 3"};
         listWatched.setListData(series);
     }
@@ -298,6 +304,7 @@ public class UBFLIX extends JFrame{
      * Mètode que actualitza les sèries de la llista ContinueWatching
      */
     private void refreshContinueWatching() {
+        //TODO Cal cridar a Controller per refescar les series
         String[] series = {"serie 1", "serie 2", "serie 3"};
         listContinueWatching.setListData(series);
     }
@@ -310,6 +317,7 @@ public class UBFLIX extends JFrame{
         int numRows = tableModelVal.getRowCount();
         for (int i = numRows - 1; i >= 0; i--)
             tableModelVal.removeRow(i);
+        //TODO Cal cridar a Controller per refescar les series
         String [] topTenVal = {"serie 1", "serie 2", "serie 3", "serie 4", "serie 5", "serie 6", "serie 7", "serie 8", "serie 9", "serie 10"};
         for (String serie: topTenVal) {
             tableModelVal.addRow(new String[]{serie, String.format("%.2f", 5.7)});
@@ -324,7 +332,7 @@ public class UBFLIX extends JFrame{
         int numRows = tableModelVis.getRowCount();
         for (int i = numRows - 1; i >= 0; i--)
             tableModelVis.removeRow(i);
-
+        //TODO Cal cridar a Controller per refescar les series
         String [] topTenVisualitzacions = {"serie 1", "serie 2", "serie 3", "serie 4", "serie 5", "serie 6", "serie 7", "serie 8", "serie 9", "serie 10"};
         for (String serie: topTenVisualitzacions) {
             tableModelVis.addRow(new Object[]{serie, 10});

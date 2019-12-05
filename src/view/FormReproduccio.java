@@ -1,3 +1,12 @@
+/*
+
+Autors:
+* Juan Cano Pradas
+* Nil Ballus Riu
+* David Rial Fígols
+
+ */
+
 package view;
 
 import javax.swing.*;
@@ -90,6 +99,7 @@ class FormReproduccio extends JDialog {
     private void formWindowClosing(WindowEvent evt, String serie, int numTemporada, String episodi) {
         timer.stop();
         int tempsVisualitzacio = (progressBar.getValue()*duracioVisualitzacio)/100;
+        //TODO Cal cridar a Controller per guardar l'estat de la visualització
         String estat = "Episodi visualitzat";
         JOptionPane.showMessageDialog(jPanel, estat);
         dispose();

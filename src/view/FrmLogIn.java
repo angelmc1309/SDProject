@@ -1,3 +1,12 @@
+/*
+
+Autors:
+* Juan Cano Pradas
+* Nil Ballus Riu
+* David Rial Fígols
+
+ */
+
 package view;
 
 
@@ -75,6 +84,7 @@ class FrmLogIn extends JDialog {
      */
     private void onOK() {
         try {
+            //TODO Cal cridar a Controller per fer el LogIn
             String info = "Log-in correcte";
             JOptionPane.showMessageDialog(this, info, "INFORMACIÓ LOG-IN", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();

@@ -1,3 +1,12 @@
+/*
+
+Autors:
+* Juan Cano Pradas
+* Nil Ballus Riu
+* David Rial Fígols
+
+ */
+
 package view;
 
 import javax.swing.*;
@@ -52,7 +61,7 @@ class FormEpisodi extends JDialog{
         titolEpisodi.setText("<html><u> Títol de l'episodi:</u> " + " "+ "<html></u> " + titol);
         duracioEpisodi.setText("<html><u> Duració:</u> " + duracio + " segons");
         descripcioEpisodi.setText("<html><body style=' width: 300 px'>"+"<html><u> Descripció:</u> " + descripcio);
-        valorarButton.setEnabled(estaVisualitzat(idSerie, numTemporada, titol));
+        valorarButton.setEnabled(estaValorat(idSerie, numTemporada, titol));
         tornarAlMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,9 +79,9 @@ class FormEpisodi extends JDialog{
         valorarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    FrmValoracio dialog = new FrmValoracio(idSerie, numTemporada, titol);
-                    dialog.pack();
-                    dialog.setVisible(true);
+                FrmValoracio dialog = new FrmValoracio(idSerie, numTemporada, titol);
+                dialog.pack();
+                dialog.setVisible(true);
             }
         });
     }
@@ -85,23 +94,24 @@ class FormEpisodi extends JDialog{
      * @param duracio duració de l'episodi seleccionat
      */
     private void onVisualitzar(String idSerie, int numTemporada, String titol, int duracio) {
-            int duracioVisualitzada = 0;
-            FormReproduccio fr = new FormReproduccio(idSerie, numTemporada, titol, duracio, duracioVisualitzada);
-            fr.pack();
-            fr.setVisible(true);
-            valorarButton.setEnabled(estaVisualitzat(idSerie, numTemporada, titol));
+        int duracioVisualitzada = 0;
+        FormReproduccio fr = new FormReproduccio(idSerie, numTemporada, titol, duracio, duracioVisualitzada);
+        fr.pack();
+        fr.setVisible(true);
+        valorarButton.setEnabled(estaValorat(idSerie, numTemporada, titol));
+        //TODO Cal fer la crida a Controller per indicar la duracio de la visualitzacio
     }
 
     /**
-     * Mètode que serveix per saber si el client està subscrit a l'episodi.
+     * Mètode que serveix per saber si el client ha valorat l'episodi.
      * @param idSerie identificador de la sèrie de l'episodi
      * @param numTemporada número de temporada de l'episodi
      * @param titol títol de l'episodi seleccionat
      * @return True si el client hi està subscrit. False en cas contrari.
      */
-    private boolean estaVisualitzat(String idSerie, int numTemporada, String titol) {
+    private boolean estaValorat(String idSerie, int numTemporada, String titol) {
+        //TODO Cal fer la logica de valoracio cridant a Controller
         return true;
     }
-
 
 }

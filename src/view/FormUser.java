@@ -1,3 +1,12 @@
+/*
+
+Autors:
+* Juan Cano Pradas
+* Nil Ballus Riu
+* David Rial Fígols
+
+ */
+
 package view;
 
 import javax.swing.*;
@@ -52,6 +61,7 @@ public class FormUser extends JDialog{
     }
 
     private void onRegister() {
+        //TODO Cal cridar a Controller per fer el registre de l'usuari
         JOptionPane.showMessageDialog(this, "Usuari registrat correctament");
         dispose();
     }
