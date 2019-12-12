@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 public class EstatVisualitzacio {
     public static int NOT_STARTED = 0;

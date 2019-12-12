@@ -1,4 +1,4 @@
-package resources.dao.MOCK;
+package ub.edu.resources.dao.MOCK;
 
 import ub.edu.model.Valoracions;
 import ub.edu.model.ValoracionsEstrelles;

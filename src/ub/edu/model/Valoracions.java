@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 public abstract class Valoracions {
     private String usuariId;

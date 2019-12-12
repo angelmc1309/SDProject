@@ -1,4 +1,4 @@
-package resources.service;
+package ub.edu.resources.service;
 
 import ub.edu.resources.dao.*;
 

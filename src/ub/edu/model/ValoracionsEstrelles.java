@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 public class ValoracionsEstrelles extends Valoracions {
     private static final int  MIN_STARS = 1,MAX_STARS = 5;

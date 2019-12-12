@@ -1,4 +1,4 @@
-package controller;
+package ub.edu.controller;
 
 import ub.edu.model.*;
 import ub.edu.resources.service.AbstractFactoryData;

@@ -1,4 +1,4 @@
-package resources.dao.MOCK;
+package ub.edu.resources.dao.MOCK;
 
 import ub.edu.resources.dao.DAOClient;
 import ub.edu.model.Client;

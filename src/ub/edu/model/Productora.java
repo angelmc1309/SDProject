@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 public class Productora {
     private String nom, id,anyCreacio;

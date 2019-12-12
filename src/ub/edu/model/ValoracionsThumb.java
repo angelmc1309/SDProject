@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 public class ValoracionsThumb extends Valoracions {
     private int value;

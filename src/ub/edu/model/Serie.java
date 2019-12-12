@@ -1,4 +1,6 @@
-package model;
+package ub.edu.model;
+
+import ub.edu.model.DetallsSerie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +10,7 @@ import java.util.List;
 public class Serie {
     private String idSerie;
     private int ntemporades;
-    private HashMap<Integer,Temporada> temporades;
+    private HashMap<Integer, Temporada> temporades;
     private DetallsSerie detallsSerie;
 
 

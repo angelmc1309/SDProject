@@ -1,4 +1,4 @@
-package model;
+package ub.edu.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
