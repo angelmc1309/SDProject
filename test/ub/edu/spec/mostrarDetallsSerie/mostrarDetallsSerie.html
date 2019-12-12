@@ -1,0 +1,56 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Mostrar Detalls Serie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 4:
+        Requeriments per mostrar detalls sèrie:</h2>
+
+    <h3>REQ-04-00-01
+        La sèrie es troba al catàleg:</h3>
+    La sèrie es troba al càtaleg, es llisten els seus detalls:
+    <table>
+        <tr>
+            <th concordion:set="#string">idSerie</th>
+            <th >result</th>
+        </tr>
+        <tr concordion:execute="#result = mostrarDetallsSerie(#idSerie)" >
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:assertEquals="#result">Titol: Breaking Bad Descripcio: Tras cumplir 50 aׯs, Walter White (Bryan Cranston), un profesor de quӭica de un instituto de Albuquerque, Nuevo Mϸico, se entera de que tiene un cȮcer de pulmخ incurable. Casado con Skyler (Anna Gunn) y con un hijo discapacitado (RJ Mitte), la brutal noticia lo impulsa a dar un drȳtico cambio a su vida: decide, con la ayuda de un antiguo alumno (Aaron Paul), fabricar anfetaminas y ponerlas a la venta. Lo que pretende es liberar a su familia de problemas econحicos cuando se produzca el fatal desenlace Productora: 1 AMC:Gran_Via_Productions Directors: V.Gilligan, Personatges: B.Cranston A.Paul D.Norris
+            </td>
+        </tr>
+        <tr concordion:execute="#result = mostrarDetallsSerie(#idSerie)" >
+            <td concordion:set="#idSerie">pblinders</td>
+            <td concordion:assertEquals="#result">Titol: Peaky Blinders Descripcio: A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby, who means to move up in the world. Productora: 8 Caryn_Mandabach_Productions Directors: C.Murphy, Personatges: P.Anderson J.Cole
+            </td>
+        </tr>
+        <tr concordion:execute="#result = mostrarDetallsSerie(#idSerie)" >
+            <td concordion:set="#idSerie">mrobot</td>
+            <td concordion:assertEquals="#result">Titol: Mr Robot Descripcio: Elliot Anderson es un joven y brillante programador con problemas para las relaciones sociales que durante el dӡ trabaja como tϣnico de ciberseguridad de una importante empresa informȴica y por la noche es un desinteresado justiciero cibernϴico, que se verǠenvuelto en una oscura trama. Productora: 2 USA_Network_Universal_Cable_Productions Directors: S.Esmail, Personatges: R.Malek C.Slater
+            </td>
+        </tr>
+    </table>
+
+    <h3>REQ-04-00-02
+        La sèrie no es troba al catàleg:</h3>
+    S'imprimeix  un missatge d'error:
+    <table>
+        <tr>
+            <th concordion:set="#string">idSerie</th>
+            <th >result</th>
+        </tr>
+        <tr concordion:execute="#result = mostrarDetallsSerie(#idSerie)" >
+            <td concordion:set="#idSerie">Skins</td>
+            <td concordion:assertEquals="#result">Sèrie no vàlida</td>
+        </tr>
+        <tr concordion:execute="#result = mostrarDetallsSerie(#idSerie)" >
+            <td concordion:set="#idSerie">Prison Break</td>
+            <td concordion:assertEquals="#result">Sèrie no vàlida</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Crear Usuari</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 1.1:
+        Requeriments per crear un usuari:</h2>
+
+    <h3>REQ-01-01-01
+        Usuari Correcte:</h3>
+    No existeix cap usuari amb el pateix nom pertanyent al client, i el client no ha assolit el seu número màxim
+    d'usuaris associats:
+    <table>
+        <tr>
+            <th concordion:set="#string">Client Name</th>
+            <th >User Name</th>
+            <th >Usuari Creat</th>
+        </tr>
+        <tr concordion:execute="#result=createUser(#client, #nom)">
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#nom">Armando</td>
+            <td concordion:assertEquals="#result">false</td>
+        </tr>
+        <tr concordion:execute="#result=createUser(#client, #nom)">
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#nom">Angel</td>
+            <td concordion:assertEquals="#result">true</td>
+        </tr>
+        <tr concordion:execute="#result=createUser(#client, #nom)">
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#nom">Aura</td>
+            <td concordion:assertEquals="#result">true</td>
+        </tr>
+        <tr concordion:execute="#result=createUser(#client, #nom)">
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#nom">Aina</td>
+            <td concordion:assertEquals="#result">true</td>
+        </tr>
+        <tr concordion:execute="#result=createUser(#client, #nom)">
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#nom">Oriol</td>
+            <td concordion:assertEquals="#result">true</td>
+        </tr>
+    </table>
+
+        <h3>REQ-01-01-02
+            Complert el nombre maxim d'usuaris:</h3>
+    Si tenim el nombre maxim d'usuaris quan es vulgui crear un usuari s'indica que no es poden crear mes o ja
+    existeix un  usuari amb el mateix nom associat al client:
+        <table>
+            <tr>
+                <th concordion:set="#string">Client Name</th>
+                <th >S'ha arribat al màxim d'usuaris</th>
+            </tr>
+            <tr concordion:execute="#result=tooMuchUsers(#client)">
+                <td concordion:set="#client">ajaleo</td>
+                <td concordion:assertEquals="#result">true</td>
+            </tr>
+            <tr concordion:execute="#result=tooMuchUsers(#client)">
+                <td concordion:set="#client">dtomacal</td>
+                <td concordion:assertEquals="#result">false</td>
+            </tr>
+            <tr concordion:execute="#result=tooMuchUsers(#client)">
+                <td concordion:set="#client">lmento</td>
+                <td concordion:assertEquals="#result">true</td>
+            </tr>
+        </table>
+
+</div>
+</body>
+</html>

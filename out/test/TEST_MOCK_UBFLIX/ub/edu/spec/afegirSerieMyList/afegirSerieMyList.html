@@ -1,0 +1,67 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Afegir Serie a MyList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 5:
+        Requeriments per afegir sèries a Mylist:</h2>
+
+    <h3>REQ-05-00-02
+        Sèrie no existent a My List:</h3>
+    Si la sèrie no esta en MyList quan s'intenta afegir, s'afegeix a MyList i s'informa a l'usuari:
+    <table>
+        <tr>
+            <th concordion:set="#string">Client</th>
+            <th > Usuari</th>
+            <th > idSerie</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = afegirSerieMyList(#client,#usuari,#idSerie)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser3</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:assertEquals="#result">Sèrie afegida</td>
+        </tr>
+        <tr concordion:execute="#result = afegirSerieMyList(#client,#usuari,#idSerie)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser3</td>
+            <td concordion:set="#idSerie">pblinders</td>
+            <td concordion:assertEquals="#result">Sèrie afegida</td>
+        </tr>
+        <tr concordion:execute="#result = afegirSerieMyList(#client,#usuari,#idSerie)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser2</td>
+            <td concordion:set="#idSerie">mrobot</td>
+            <td concordion:assertEquals="#result">Sèrie afegida</td>
+        </tr>
+    </table>
+
+    <h3>REQ-05-00-01
+        Sèrie existent a My List:</h3>
+    Si la sèrie ja existeix a MyList quan l'intenta afegir s'informa del error:
+        <table>
+            <tr>
+                <th concordion:set="#string">Client</th>
+                <th > Usuari</th>
+                <th > idSerie</th>
+                <th >Resultat</th>
+            </tr>
+            <tr concordion:execute="#result = afegirSerieMyList(#client,#usuari,#idSerie)" >
+                <td concordion:set="#client">ajaleo</td>
+                <td concordion:set="#usuari">ajaleoUser1</td>
+                <td concordion:set="#idSerie">bbad</td>
+                <td concordion:assertEquals="#result">Error: la sèrie ja està a la llista</td>
+            </tr>
+            <tr concordion:execute="#result = afegirSerieMyList(#client,#usuari,#idSerie)" >
+                <td concordion:set="#client">ajaleo</td>
+                <td concordion:set="#usuari">ajaleoUser2</td>
+                <td concordion:set="#idSerie">mrobot</td>
+                <td concordion:assertEquals="#result">Error: la sèrie ja està a la llista</td>
+            </tr>
+        </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Modificar Perfil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 9.1:
+        Requeriments fer modificar perfil:</h2>
+
+    <h3>REQ-09-01-01
+        Usuari que existeix:</h3>
+    Si es pot trobar l'usuari pertanyent al client, es modifica el seu perfil:
+    <table>
+        <tr>
+            <th concordion:set="#string">clientName</th>
+            <th > username</th>
+            <th > newUsername</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = modificarPerfil(#clientName,#username,#newUsername)" >
+            <td concordion:set="#clientName">ajaleo</td>
+            <td concordion:set="#username">ajaleoUser1</td>
+            <td concordion:set="#newUsername">newajaleoUser</td>
+            <td concordion:assertEquals="#result">User: ajaleoUser1 changed to newajaleoUser</td>
+        </tr>
+        <tr concordion:execute="#result = modificarPerfil(#clientName,#username,#newUsername)" >
+            <td concordion:set="#clientName">lmento</td>
+            <td concordion:set="#username">lmentoUser</td>
+            <td concordion:set="#newUsername">newlmentoUser</td>
+            <td concordion:assertEquals="#result">User: lmentoUser changed to newlmentoUser</td>
+        </tr>
+    </table>
+
+    <h3>REQ-09-01-02
+        Usuari que no existeix:</h3>
+    Si no es pot trobar l'usuari pertanyent al client, s'imprimeix un missatge d'error:
+    <table>
+        <th concordion:set="#string">clientName</th>
+        <th > username</th>
+        <th > newUsername</th>
+        <th >Resultat</th>
+        <tr concordion:execute="#result = modificarPerfil(#clientName,#username,#newUsername)" >
+            <td concordion:set="#clientName">ajaleo</td>
+            <td concordion:set="#username">noValidUser</td>
+            <td concordion:set="#newUsername">newajaleoUser</td>
+            <td concordion:assertEquals="#result">Usuari Unknown</td>
+        </tr>
+        <tr concordion:execute="#result = modificarPerfil(#clientName,#username,#newUsername)" >
+            <td concordion:set="#clientName">lmento</td>
+            <td concordion:set="#username">noValidUser</td>
+            <td concordion:set="#newUsername">newlmentoUser</td>
+            <td concordion:assertEquals="#result">Usuari Unknown</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

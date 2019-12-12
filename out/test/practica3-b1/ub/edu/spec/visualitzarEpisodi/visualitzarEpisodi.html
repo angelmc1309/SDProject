@@ -1,0 +1,105 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Visualitzar Episodi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 6:
+        Requeriments per visualitzar episodi:</h2>
+
+    <h3>REQ-06-00-01
+        Episodi no començat anteriorment:</h3>
+    Si el episodi no ha sigut començat anteriorment es comença desde el principi:
+    <table>
+        <tr>
+            <th >Client</th>
+            <th >Usuari</th>
+            <th >Serie</th>
+            <th >Temporada</th>
+            <th >Episodi</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = startVisualitzacio(#client,#usuari,#serie,#temporada,#episodi)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser1</td>
+            <td concordion:set="#serie">bbad</td>
+            <td concordion:set="#temporada">1</td>
+            <td concordion:set="#episodi">Cat's in the bag</td>
+            <td concordion:assertEquals="#result">Episodi començat pel principi</td>
+        </tr>
+    </table>
+
+    <h3>REQ-06-00-02
+        Episodi ja començat:</h3>
+    El episodi que ha sigut visualitzat anteriorment però va ser interromput abans de finalitzar:
+    <table>
+        <tr>
+            <th >Client</th>
+            <th >Usuari</th>
+            <th >Serie</th>
+            <th >Temporada</th>
+            <th >Episodi</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = startVisualitzacio(#client,#usuari,#serie,#temporada,#episodi)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser3</td>
+            <td concordion:set="#serie">mrobot</td>
+            <td concordion:set="#temporada">1</td>
+            <td concordion:set="#episodi">ep1</td>
+            <td concordion:assertEquals="#result">Episodi començat pel minut:50</td>
+        </tr>
+    </table>
+
+    <h3>REQ-06-00-03
+        Episodi finalitzat:</h3>
+    L'episodi es visualitzat fins el final:
+    <table>
+        <tr>
+            <th >Client</th>
+            <th >Usuari</th>
+            <th >Serie</th>
+            <th >Temporada</th>
+            <th >Episodi</th>
+            <th >MinutsRestants</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = endVisualitzacio(#client,#usuari,#serie,#temporada,#episodi,#minutsRestants)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser2</td>
+            <td concordion:set="#serie">bbad</td>
+            <td concordion:set="#temporada">1</td>
+            <td concordion:set="#episodi">Piloto</td>
+            <td concordion:set="#minutsRestants">0</td>
+            <td concordion:assertEquals="#result">Episodi acabat</td>
+        </tr>
+    </table>
+
+    <h3>REQ-06-00-04
+        Episodi interromput:</h3>
+    Si el episodi ha sigut interromput abans de terminar:
+    <table>
+        <tr>
+            <th >Client</th>
+            <th >Usuari</th>
+            <th >Serie</th>
+            <th >Temporada</th>
+            <th >Episodi</th>
+            <th >MinutsRestants</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = endVisualitzacio(#client,#usuari,#serie,#temporada,#episodi,#minutsRestants)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser1</td>
+            <td concordion:set="#serie">bbad</td>
+            <td concordion:set="#temporada">1</td>
+            <td concordion:set="#episodi">Cat's in the bag</td>
+            <td concordion:set="#minutsRestants">20</td>
+            <td concordion:assertEquals="#result">Episodi deixat a mitges</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

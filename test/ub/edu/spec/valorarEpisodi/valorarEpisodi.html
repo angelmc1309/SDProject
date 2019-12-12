@@ -1,0 +1,151 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Valorar Episodi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+<h1>UC 7:
+    Valorar episodi:</h1>
+
+    <h2>UC 7.1:
+        Requeriments per valorar episodi amb thumb:</h2>
+
+    <h3>REQ-07-01-01
+        Episodi no valorat:</h3>
+    Si l'episodi no esta valorat anteriorment per l'usuari es guarda la valoracio:
+    <table>
+        <tr >
+            <th >idClient</th>
+            <th >idUsuari</th>
+            <th >idSerie</th>
+            <th >nTemporada</th>
+            <th >idCapitol</th>
+            <th >valoracio</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbThumb(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser5</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Piloto</td>
+            <td concordion:set="#valoracio">1</td>
+            <td concordion:assertEquals="#result">Episodi valorat correctament</td>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbThumb(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser5</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Cat's in the Bag</td>
+            <td concordion:set="#valoracio">1</td>
+            <td concordion:assertEquals="#result">Episodi valorat correctament</td>
+        </tr>
+    </table>
+
+    <h3>REQ-07-01-02
+        Episodi valorat:</h3>
+    Si l'episodi esta valorat anteriorment per l'usuari no es guarda la valoracio i s'informa de l'error a l'usuari:
+    <table>
+        <tr >
+            <th>idClient</th>
+            <th >idUsuari</th>
+            <th >idSerie</th>
+            <th > nTemporada</th>
+            <th > idCapitol</th>
+            <th >valoracio</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbThumb(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+                <td concordion:set="#idClient">ajaleo</td>
+                <td concordion:set="#idUsuari">ajaleoUser5</td>
+                <td concordion:set="#idSerie">bbad</td>
+                <td concordion:set="#nTemporada">1</td>
+                <td concordion:set="#idCapitol">Cat's in the Bag</td>
+                <td concordion:set="#valoracio">1</td>
+                <td concordion:assertEquals="#result">Episodi ja valorat</td>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbThumb(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser1</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Piloto</td>
+            <td concordion:set="#valoracio">1</td>
+            <td concordion:assertEquals="#result">Episodi ja valorat</td>
+        </tr>
+    </table>
+
+    <h2>UC 7.2:
+        Requeriments per valorar episodi amb estrelles:</h2>
+
+    <h3>REQ-07-02-01
+        Episodi no valorat:</h3>
+    Si l'episodi no esta valorat anteriorment per l'usuari es guarda la valoracio:
+    <table>
+        <tr >
+            <th>idClient</th>
+            <th >idUsuari</th>
+            <th >idSerie</th>
+            <th >nTemporada</th>
+            <th >idCapitol</th>
+            <th >valoracio</th>
+            <th >Resultat</th>
+        </tr>
+         <tr concordion:execute="#result = valorarEpisodiAmbEstrelles(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser4</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+             <td concordion:set="#idCapitol">Cat's in the Bag</td>
+            <td concordion:set="#valoracio">5</td>
+             <td concordion:assertEquals="#result">Episodi valorat correctament</td>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbEstrelles(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser4</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Piloto</td>
+            <td concordion:set="#valoracio">4</td>
+            <td concordion:assertEquals="#result">Episodi valorat correctament</td>
+        </tr>
+    </table>
+
+    <h3>REQ-07-02-02
+        Episodi valorat:</h3>
+    Si l'episodi esta valorat anteriorment per l'usuari no es guarda la valoracio i s'informa de l'error a l'usuari:
+    <table>
+        <tr >
+            <th>idClient</th>
+            <th >idUsuari</th>
+            <th >idSerie</th>
+            <th > nTemporada</th>
+            <th > idCapitol</th>
+            <th >valoracio</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbEstrelles(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser4</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Cat's in the Bag</td>
+            <td concordion:set="#valoracio">5</td>
+            <td concordion:assertEquals="#result">Episodi ja valorat</td>
+        </tr>
+        <tr concordion:execute="#result = valorarEpisodiAmbEstrelles(#idClient,#idUsuari,#idSerie,#nTemporada,#idCapitol,#valoracio)">
+            <td concordion:set="#idClient">ajaleo</td>
+            <td concordion:set="#idUsuari">ajaleoUser1</td>
+            <td concordion:set="#idSerie">bbad</td>
+            <td concordion:set="#nTemporada">1</td>
+            <td concordion:set="#idCapitol">Piloto</td>
+            <td concordion:set="#valoracio">4</td>
+            <td concordion:assertEquals="#result">Episodi ja valorat</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

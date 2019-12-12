@@ -1,0 +1,355 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  namespace ub.edu.model {
+    class ub.edu.model.Actor {
+        - id : String
+        - nacionalitat : String
+        - nomReal : String
+        + Actor()
+        + getNomReal()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.BibliotecaSeries {
+        - biblioteca : List<Serie>
+        + BibliotecaSeries()
+        + find()
+        + getAllEpisodis()
+        + getAllSeries()
+        + getDuradaEpisodi()
+        + llistarCatalegSeries()
+        + mostrarDetallsSerie()
+        + updateEpisodis()
+        + updateTemporades()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.CarteraClients {
+        - llista : List<Client>
+        + CarteraClients()
+        + addClient()
+        + addSerieMyList()
+        + addUsuariAClient()
+        + addValoracio()
+        + allEpisodisWatched()
+        + endVisualitzacio()
+        + find()
+        + getClientPassword()
+        + getPerfilUsuariClient()
+        + isSerieStarted()
+        + isValidNameUsuari()
+        + modificaPerfil()
+        + startVisualitzacio()
+        + tooMuchUsers()
+        + updateFavorits()
+        + updateUsers()
+        + updateValoracions()
+        + updateVisualitzacions()
+        + veureMyList()
+        + veurePerfil()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Client {
+        {static} - MAX_USERS : int
+        - adreça : String
+        - dni : String
+        - nomReal : String
+        - password : String
+        - username : String
+        - usuaris : HashMap<String, Usuari>
+        + Client()
+        + addSerieMyListToUser()
+        + addUsuariToClient()
+        + allEpisodisWatched()
+        + endVisualitzacioUser()
+        + findUser()
+        + getPassword()
+        + getPerfilTextualUsuari()
+        + getUsername()
+        + isSerieStarted()
+        + modificaPerfil()
+        + setMyListToUser()
+        + setPassword()
+        + setUsername()
+        + setValoracioToUser()
+        + setVisualitzacioToUser()
+        + startVisualitzacio()
+        + tooMuchUsers()
+        + veureMyList()
+        + veurePerfil()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.DescripcioEpisodi {
+        - descripcio : String
+        - duracioMinuts : int
+        - enllaç : String
+        - idioma : String
+        - primeraEmisio : String
+        + DescripcioEpisodi()
+        + DescripcioEpisodi()
+        + getDurada()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.DetallsSerie {
+        - actors : List<Actor>
+        - descripcio : String
+        - directors : List<Director>
+        - titol : String
+        + DetallsSerie()
+        + addActorData()
+        + addDirectorData()
+        + getTitol()
+        + setDescripcio()
+        + setProductoraData()
+        + setTitol()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Director {
+        - id : String
+        - nacionalitat : String
+        - nomReal : String
+        + Director()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Episodi {
+        - idTemporada : String
+        - nom : String
+        + Episodi()
+        + getDuradaEpisodi()
+        + getIdSerie()
+        + getIdTemporada()
+        + getIdentificador()
+        + getNom()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.EstatVisualitzacio {
+        {static} + ENDED : int
+        {static} + NOT_STARTED : int
+        {static} + STARTED : int
+        - state : int
+        + EstatVisualitzacio()
+        + getState()
+        + setState()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.MyList {
+        ~ favorits : List<String>
+        ~ idClientUser : String
+        + MyList()
+        + addSerie()
+        + contains()
+        + getClient()
+        + getFavorits()
+        + getIdentificador()
+        + getUser()
+        + isEmpty()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Perfil {
+        - username : String
+        - valoracions : List<Valoracions>
+        + Perfil()
+        + getName()
+        + mostrarPerfil()
+        + setUsername()
+        + setValoracio()
+        + toString()
+        - episodiValoratAnteriorment()
+        - hasValoracions()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Productora {
+        - anyCreacio : String
+        - id : String
+        - nom : String
+        + Productora()
+        + getAnyCreacio()
+        + getId()
+        + getNom()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Serie {
+        - idSerie : String
+        - ntemporades : int
+        - temporades : HashMap<Integer, Temporada>
+        + Serie()
+        + addActorData()
+        + addDirectorData()
+        + addEpisodiToTemporada()
+        + addTemporadaToSerie()
+        + findTemporada()
+        + getAllEpisodis()
+        + getDetallsSerie()
+        + getDuradaEpisodi()
+        + getIdSerie()
+        + getTitol()
+        + mostrarDetallsSerie()
+        + setDescripcio()
+        + setProductoraData()
+        + setTitol()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Temporada {
+        - episodis : HashMap<String, Episodi>
+        - idSerie : String
+        - ntemporada : int
+        + Temporada()
+        + addEpisodi()
+        + findEpisodi()
+        + getAllEpisodis()
+        + getDuradaEpisodi()
+        + getIdSerie()
+        + getIdentificador()
+        + getNtemporada()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Usuari {
+        - clientId : String
+        - visualitzacions : HashMap<String, Visualitzacio>
+        + Usuari()
+        + addSerieMyList()
+        + allEpisodisWatched()
+        + endVisualitzacio()
+        + getClientId()
+        + getIdentificador()
+        + getName()
+        + getPerfilTextual()
+        + isSerieStarted()
+        + setMyList()
+        + setName()
+        + setValoracio()
+        + setVisualitzacio()
+        + startVisualitzacio()
+        + veureMyList()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    abstract class ub.edu.model.Valoracions {
+        - episodi : String
+        - usuariId : String
+        + Valoracions()
+        + getEpisodi()
+        + getIdentificador()
+        + getMyClientId()
+        + getMyUserId()
+        {abstract} + setValue()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.ValoracionsEstrelles {
+        {static} - MAX_STARS : int
+        {static} - MIN_STARS : int
+        - value : int
+        + ValoracionsEstrelles()
+        + setValue()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.ValoracionsThumb {
+        - value : int
+        + ValoracionsThumb()
+        + setValue()
+        + toString()
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Visualitzacio {
+        - clientId : String
+        - episodiId : String
+        - minutsEpisodi : int
+        - minutsRestants : int
+        - usuariId : String
+        + Visualitzacio()
+        + endVisualitzacio()
+        + getClient()
+        + getIdentificador()
+        + getUser()
+        + isNotStarted()
+        + isWatched()
+        + startVisualitzacio()
+    }
+  }
+  
+
+  ub.edu.model.DetallsSerie o-- ub.edu.model.Productora : productora
+  ub.edu.model.Episodi o-- ub.edu.model.DescripcioEpisodi : descripcioEpisodi
+  ub.edu.model.Serie o-- ub.edu.model.DetallsSerie : detallsSerie
+  ub.edu.model.Usuari o-- ub.edu.model.MyList : myList
+  ub.edu.model.Usuari o-- ub.edu.model.Perfil : perfil
+  ub.edu.model.ValoracionsEstrelles -up-|> ub.edu.model.Valoracions
+  ub.edu.model.ValoracionsThumb -up-|> ub.edu.model.Valoracions
+  ub.edu.model.Visualitzacio o-- ub.edu.model.EstatVisualitzacio : estat
+  ub.edu.model.Client *-- ub.edu.model.Usuari : LlistatUsuaris
+    ub.edu.model.CarteraClients *-- ub.edu.model.Client : composat de clients
+    ub.edu.model.BibliotecaSeries *-- ub.edu.model.Serie: composat de Series
+    ub.edu.model.Serie *-- ub.edu.model.Temporada: composat de temporades
+    ub.edu.model.Temporada *-- ub.edu.model.Episodi: composat d'episodis
+    ub.edu.model.DetallsSerie o-- ub.edu.model.Director
+    ub.edu.model.DetallsSerie o-- ub.edu.model.Actor
+    ub.edu.model.Usuari o-- ub.edu.model.Valoracions
+    ub.edu.model.Usuari o-- ub.edu.model.Visualitzacio
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

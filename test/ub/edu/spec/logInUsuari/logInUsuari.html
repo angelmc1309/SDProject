@@ -1,0 +1,51 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>logInUsuari</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div>
+    <h2>UC 2.1:
+        Requeriments fer login com a usuari:</h2>
+
+    <h3>REQ-02-01-01
+        Usuari correcte:</h3>
+    Si el usuari indicat està associat al client:
+    <table >
+        <tr>
+            <th >Client</th>
+            <th >Username</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = isValidUsuari(#client,#username)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#username">ajaleoUser2</td>
+            <td concordion:assertEquals="#result">Valid Usuari</td>
+        </tr>
+        <tr concordion:execute="#result = isValidUsuari(#client,#username)" >
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#username">lmentoUser</td>
+            <td concordion:assertEquals="#result">Valid Usuari</td>
+        </tr>
+    </table>
+
+    <h3>REQ-02-01-02
+        Usuari incorrecte:</h3>
+    Si el usuari indicat no està associat al client:
+    <table >
+        <tr>
+            <th >Client</th>
+            <th >Username</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = isValidUsuari(#username,#name)" >
+            <td concordion:set="#username">ajaleo</td>
+            <td concordion:set="#name">Marina</td>
+            <td concordion:assertEquals="#result">Usuari Unknown</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

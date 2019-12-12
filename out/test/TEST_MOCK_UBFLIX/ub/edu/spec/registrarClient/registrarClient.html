@@ -1,0 +1,65 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Registrar client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 1:
+        Requeriments per registrar-se:</h2>
+    <h3>REQ-01-00-01
+        Registre correcte:</h3>
+    Si totes les dades son vàlides i el client no existeix, es registrarà al client i creara l'usuari:
+    <table >
+        <tr>
+            <th concordion:set="#string">Username</th>
+            <th >Password</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+            <td concordion:set="#username">ecolero</td>
+            <td concordion:set="#password">ecolero</td>
+            <td concordion:assertEquals="#result">Client afegit</td>
+        </tr>
+        <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+            <td concordion:set="#username">atormenta</td>
+            <td concordion:set="#password">atormenta</td>
+            <td concordion:assertEquals="#result">Client afegit</td>
+        </tr>
+        <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+            <td concordion:set="#username">username</td>
+            <td concordion:set="#password">password</td>
+            <td concordion:assertEquals="#result">Client afegit</td>
+        </tr>
+    </table>
+
+    <h3>REQ-01-00-02
+        Client ja registrat:</h3>
+        Si les dades del client son les d'un client ja registrat indicara al client el problema i
+        permetra canviar les dades:
+        <table >
+            <tr>
+                <th concordion:set="#string">Username</th>
+                <th >Password</th>
+                <th >Resultat</th>
+            </tr>
+            <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+                <td concordion:set="#username">ajaleo</td>
+                <td concordion:set="#password">pass</td>
+                <td concordion:assertEquals="#result">Usuari ja existeix</td>
+            </tr>
+            <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+                <td concordion:set="#username">atormenta</td>
+                <td concordion:set="#password">atormenta</td>
+                <td concordion:assertEquals="#result">Usuari ja existeix</td>
+            </tr>
+            <tr concordion:execute="#result = altaClient(#username,#password,#string,#string,#string)" >
+                <td concordion:set="#username">lmento</td>
+                <td concordion:set="#password">password</td>
+                <td concordion:assertEquals="#result">Usuari ja existeix</td>
+            </tr>
+        </table>
+
+</div>
+</body>
+</html>

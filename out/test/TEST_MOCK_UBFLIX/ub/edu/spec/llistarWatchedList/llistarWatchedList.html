@@ -1,0 +1,51 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Llistar WatchedList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div >
+
+    <h2>UC 3.1:
+        Requeriments per llistar WatchedList</h2>
+
+    <h3>REQ-03-01-01
+        Mostrar els elements a la llista:</h3>
+    Si la llista conté elements s'imprimeix el seu contingut:
+    <table >
+        <tr>
+            <th >Client</th>
+            <th >User</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = llistarWatchedList(#client,#username)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#username">ajaleoUser2</td>
+            <td concordion:assertEquals="#result">Breaking Bad</td>
+        </tr>
+    </table>
+
+    <h3>REQ-03-01-02
+        Llista buida:</h3>
+    Si la llista ContinueWatching està buida s'imprimeix un missatge d'error:
+    <table>
+        <tr>
+            <th >Client</th>
+            <th >User</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = llistarWatchedList(#client,#username)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#username">ajaleoUser1</td>
+            <td concordion:assertEquals="#result">Empty List</td>
+        </tr>
+        <tr concordion:execute="#result = llistarWatchedList(#client,#username)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#username">ajaleoUser3</td>
+            <td concordion:assertEquals="#result">Empty List</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

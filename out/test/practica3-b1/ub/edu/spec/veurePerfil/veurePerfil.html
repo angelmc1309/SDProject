@@ -1,0 +1,71 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Veure Perfil</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>System Login UBFLIX</title>
+</head>
+<body>
+<div>
+    <h2>UC:9
+        Requeriments per veure perfil:</h2>
+
+    <h3>REQ-09-00-01
+        Perfil amb valoracions:</h3>
+    Si hi ha valoracions enregistrades per part de l'usuari, quan l'usuari visualitzi el perfil, es mostrara
+    el nom i les valoracions fetes per l'usuari:
+    <table >
+        <tr >
+            <th >Nom del client</th>
+            <th >Usuari</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#user">ajaleoUser3</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser3 Valoracions: bbad@1@Piloto valorat amb👍
+            </td>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#user">ajaleoUser1</td>
+            <td concordion:assertEquals="#result"> Usuari: ajaleoUser1 Valoracions: bbad@1@Cat's in the bag
+                valorat amb👍 bbad@1@Piloto valorat amb 5 estrelles</td>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#user">ajaleoUser2</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser2 Valoracions: bbad@1@Cat's in the bag
+                valorat amb 4 estrelles</td>
+        </tr>
+    </table>
+
+    <h3>REQ-09-00-02
+        Perfil sense valoracions:</h3>
+    Si no hi ha valoracions enregistrades per part de l'usuari, quan l'usuari visualitzi el perfil,
+    es mostrara el nom i s'indica que no existeixen valoracions
+    <table >
+        <tr >
+            <th >Nom del client</th>
+            <th >Usuari</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">lmento</td>
+            <td concordion:set="#user">lmentoUser</td>
+            <td concordion:assertEquals="#result">Usuari: lmentoUser Usuari sense valoracions</td>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#user">ajaleoUser4</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser4 Usuari sense valoracions</td>
+        </tr>
+        <tr concordion:execute="#result = veurePerfilUsuari(#client,#user)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#user">ajaleoUser5</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser5 Usuari sense valoracions</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

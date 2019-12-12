@@ -1,0 +1,82 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>LogIn Client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 2:
+        Requeriments per fer logIn com a client: </h2>
+
+    <h3>REQ-02-00-01
+        LogIn contraseña vàlida:</h3>
+    Retorna True si la contraseña introduida és vàlida:
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Vàlid</th>
+        </tr>
+        <tr concordion:execute="#valid=isValidLogin(#username, #password)">
+            <td concordion:set="#username">ajaleo</td>
+            <td concordion:set="#password">ajaleo</td>
+            <td concordion:assertEquals="#valid">True</td>
+        </tr>
+        <tr concordion:execute="#valid=isValidLogin(#username, #password)">
+            <td concordion:set="#username">lmento</td>
+            <td concordion:set="#password">lmento</td>
+            <td concordion:assertEquals="#valid">True</td>
+        </tr>
+    </table>
+
+    <h3>REQ-02-00-02
+        LogIn no contraseña no vàlida:</h3>
+    Retorna False si la contraseña introduida no és vàlida:
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Vàlid</th>
+        </tr>
+        <tr concordion:execute="#valid=isValidLogin(#username, #password)">
+            <td concordion:set="#username">lmento</td>
+            <td concordion:set="#password">false pass</td>
+            <td concordion:assertEquals="#valid">False</td>
+        </tr>
+    </table>
+
+    <h3>REQ-02-00-01
+        LogIn client vàlid:</h3>
+    Comprova que el client introduit sigui vàlid:
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Vàlid</th>
+        </tr>
+        <tr concordion:execute="#valid=isValidClient(#username)">
+            <td concordion:set="#username">ajaleo</td>
+            <td concordion:assertEquals="#valid">Valid Client</td>
+        </tr>
+        <tr concordion:execute="#valid=isValidClient(#username)">
+            <td concordion:set="#username">lmento</td>
+            <td concordion:assertEquals="#valid">Valid Client</td>
+        </tr>
+    </table>
+
+    <h3>REQ-02-00-02
+        LogIn client no vàlid:</h3>
+    Retorna Client Unknown si el client introduit no és vàlid:
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Vàlid</th>
+        </tr>
+        <tr concordion:execute="#valid=isValidClient(#username)">
+            <td concordion:set="#username">pepito</td>
+            <td concordion:assertEquals="#valid">Client Unknown</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

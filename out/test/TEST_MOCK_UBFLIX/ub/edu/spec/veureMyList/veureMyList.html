@@ -1,0 +1,55 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Veure MyList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <h2>UC 3:
+        Requerimets per a veure la llista MyList:</h2>
+
+    <h3>REQ-03-00-01
+        Llista MyList conté elements:</h3>
+    Si la llista MyList conté elements, aquests es listen:
+    <table>
+        <tr>
+            <th concordion:set="#string">Client</th>
+            <th > Usuari</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = veureMyList(#client,#usuari)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser2</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser2 Series: bbad pblinders</td>
+        </tr>
+        <tr concordion:execute="#result = veureMyList(#client,#usuari)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser1</td>
+            <td concordion:assertEquals="#result">Usuari: ajaleoUser1 Series: bbad</td>
+        </tr>
+    </table>
+
+    <h3>REQ-03-00-02
+        Llista MyList buida:</h3>
+    Si la llista està buida es mostra Llista buida:
+    <table>
+        <tr>
+            <th concordion:set="#string">Client</th>
+            <th > Usuari</th>
+            <th >Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = veureMyList(#client,#usuari)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser4</td>
+            <td concordion:assertEquals="#result">Llista buida</td>
+        </tr>
+        <tr concordion:execute="#result = veureMyList(#client,#usuari)" >
+            <td concordion:set="#client">ajaleo</td>
+            <td concordion:set="#usuari">ajaleoUser5</td>
+            <td concordion:assertEquals="#result">Llista buida</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

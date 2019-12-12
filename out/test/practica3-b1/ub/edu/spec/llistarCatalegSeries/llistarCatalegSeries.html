@@ -1,0 +1,26 @@
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>llistarCatalegSeries</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+
+    <h2>UC 3:
+        Requeriments per llistar cataleg series:</h2>
+
+    <h3>REQ-03-00-01
+        Perfil amb llistes:</h3>
+    Si l'usuari te llistes disponibles quan vulgui llistar una d'elles es mostraran les llistes de l'usuari:
+    <table>
+        <tr>
+            <th concordion:set="#string">Resultat</th>
+        </tr>
+        <tr concordion:execute="#result = llistarCatalegSeries()" >
+            <td concordion:assertEquals="#result">Cataleg series: Mr Robot Breaking Bad Peaky Blinders</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>
