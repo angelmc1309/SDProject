@@ -3,7 +3,7 @@ package ub.edu.spec.mostrarDetallsSerie;
 import org.concordion.api.BeforeExample;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
-import ub.edu.controller.Controller;
+import controller.Controller;
 
 import java.util.List;
 

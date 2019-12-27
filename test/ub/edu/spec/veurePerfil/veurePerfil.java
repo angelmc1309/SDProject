@@ -4,8 +4,8 @@ package ub.edu.spec.veurePerfil;
 import org.concordion.api.BeforeExample;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
-import ub.edu.controller.Controller;
-import ub.edu.model.Usuari;
+import controller.Controller;
+import model.Usuari;
 
 import java.util.List;
 

@@ -3,8 +3,8 @@ package ub.edu.spec.registrarClient;
 import org.concordion.api.BeforeExample;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
-import ub.edu.controller.Controller;
-import ub.edu.resources.dao.MOCK.DAOClientMOCK;
+import controller.Controller;
+import resources.dao.MOCK.DAOClientMOCK;
 
 @RunWith(ConcordionRunner.class)
 public class registrarClient {
