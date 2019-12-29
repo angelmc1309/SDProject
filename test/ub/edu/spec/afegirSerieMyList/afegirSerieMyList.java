@@ -3,7 +3,7 @@ package ub.edu.spec.afegirSerieMyList;
 import org.concordion.api.BeforeExample;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
-import ub.edu.controller.Controller;
+import controller.Controller;
 
 @RunWith(ConcordionRunner.class)
 public class afegirSerieMyList {
@@ -11,7 +11,7 @@ public class afegirSerieMyList {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
 

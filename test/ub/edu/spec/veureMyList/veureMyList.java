@@ -3,7 +3,7 @@ package ub.edu.spec.veureMyList;
 import org.concordion.api.BeforeExample;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
-import ub.edu.controller.Controller;
+import controller.Controller;
 
 @RunWith(ConcordionRunner.class)
 public class veureMyList {
@@ -12,7 +12,7 @@ public class veureMyList {
 
     @BeforeExample
     public void init(){
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public String veureMyList(String idClient, String idUsuari){
