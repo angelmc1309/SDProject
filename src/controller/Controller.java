@@ -238,4 +238,8 @@ public class Controller {
     public String modificarPerfil(String clientName, String username, String newUsername) {
         return carteraClients.modificaPerfil(clientName,username,newUsername);
     }
+
+    public String[] getTemporadaSerie(String serie) {
+        return bibliotecaSeries.getTemporadaSerie(serie);
+    }
 }

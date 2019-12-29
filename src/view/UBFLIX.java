@@ -237,7 +237,7 @@ public class UBFLIX extends JFrame{
         for (String serie: series) {
             JPopupMenu s = new JPopupMenu();
             //TODO Cal cridar a Controller per refescar les temporades
-            String[] temporades = Controller.getInstance().mostrarDetallsSerie(serie);
+            String[] temporades = Controller.getInstance().getTemporadaSerie(serie);
             for (String temporada: temporades) {
                 JMenu temp = new JMenu(temporada);
                 refreshEpisodis(serie, temporada, temp);
