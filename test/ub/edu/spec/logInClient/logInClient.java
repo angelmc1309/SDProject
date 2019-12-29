@@ -11,7 +11,7 @@ public class logInClient {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
         controlador.iniCarteraClients();
     }
 

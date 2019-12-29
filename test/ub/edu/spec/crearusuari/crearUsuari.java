@@ -11,7 +11,7 @@ public class crearUsuari {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public boolean tooMuchUsers(String client){

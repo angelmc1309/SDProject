@@ -16,6 +16,19 @@ public class Controller {
     private CarteraClients carteraClients;  //Model
     private BibliotecaSeries bibliotecaSeries;
 
+    private volatile static Controller uniqueInstance;
+
+
+    public static Controller getInstance() {
+        if (uniqueInstance == null) {
+            synchronized (Controller.class) {
+                if (uniqueInstance == null) {
+                    uniqueInstance = new Controller();
+                }
+            }
+        }
+        return uniqueInstance;
+    }
     public Controller() {
         factory = new FactoryMOCK();
         dataService = new DataService(factory);

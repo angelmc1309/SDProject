@@ -10,7 +10,7 @@ public class valorarEpisodi {
     private Controller controlador;
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
     public String valorarEpisodiAmbThumb(String client,String usuari,String idSerie, int numTemporada,
                                          String idEpisodi, int valoracio){

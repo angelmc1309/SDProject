@@ -12,7 +12,7 @@ public class registrarClient {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
 
     }
 

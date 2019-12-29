@@ -11,7 +11,7 @@ public class llistarCatalegSeries {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
     //nomes cataleg series disponibles
     public String llistarCatalegSeries(){

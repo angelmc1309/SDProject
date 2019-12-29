@@ -11,7 +11,7 @@ public class logInUsuari {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public String isValidUsuari(String client, String usuari) {

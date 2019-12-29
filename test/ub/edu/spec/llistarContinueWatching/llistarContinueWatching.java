@@ -12,7 +12,7 @@ public class llistarContinueWatching {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public String llistarContinueWatching(String client,String usuari){

@@ -12,7 +12,7 @@ public class veureMyList {
 
     @BeforeExample
     public void init(){
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public String veureMyList(String idClient, String idUsuari){

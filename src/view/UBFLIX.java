@@ -2,6 +2,8 @@ package view;
 
 /* Interfície Gràfica desenvolupada per: Nils Ballús, Joan Cano, David Rial i Miquel Guiot */
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -221,7 +223,7 @@ public class UBFLIX extends JFrame{
      */
     private void refreshListAll() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1","serie 2", "serie 3"};
+        String[] series = Controller.getInstance().llistarCatalegSeries().split("\n");
         listAll.setListData(series);
         refreshTemporades(series);
     }
@@ -235,7 +237,7 @@ public class UBFLIX extends JFrame{
         for (String serie: series) {
             JPopupMenu s = new JPopupMenu();
             //TODO Cal cridar a Controller per refescar les temporades
-            String[] temporades = {"temporada 1","temporada 2", "temporada 3"};
+            String[] temporades = Controller.getInstance().mostrarDetallsSerie(serie);
             for (String temporada: temporades) {
                 JMenu temp = new JMenu(temporada);
                 refreshEpisodis(serie, temporada, temp);

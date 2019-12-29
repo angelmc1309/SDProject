@@ -16,7 +16,7 @@ public class veurePerfil {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
 
     }
 

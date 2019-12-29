@@ -9,6 +9,8 @@ Autors:
 
 package view;
 
+import controller.Controller;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -17,7 +19,10 @@ public class FormUser extends JDialog{
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField textFieldUsername;
+    //private JTextField textFieldClient;
     private JLabel usernameLabel;
+    //private JLabel clientLabel;
+    private Controller controlador;
 
 
     public FormUser() {
@@ -30,6 +35,8 @@ public class FormUser extends JDialog{
     }
 
     private void initComponents() {
+        controlador = new Controller();
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onRegister();
@@ -58,12 +65,27 @@ public class FormUser extends JDialog{
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         textFieldUsername.requestFocusInWindow();
+        //textFieldClient.requestFocusInWindow();
     }
 
     private void onRegister() {
         //TODO Cal cridar a Controller per fer el registre de l'usuari
-        JOptionPane.showMessageDialog(this, "Usuari registrat correctament");
-        dispose();
+        //String client = textFieldClient.getName();
+        String client = "lmento";
+        String username = textFieldUsername.getName();
+        if (controlador.addUsuari(client,username)){
+            JOptionPane.showMessageDialog(this, "Usuari registrat correctament");
+            dispose();
+        } else{
+            if (controlador.tooMuchUsers(client)){
+                JOptionPane.showMessageDialog(this,"S'ha arribat al maxim nombre d'usuaris");
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this,"Aquest usuari ja existeix");
+                textFieldUsername.setText("");
+            }
+        }
+
     }
 
     private void onCancel() {

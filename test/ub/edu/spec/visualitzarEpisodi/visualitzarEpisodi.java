@@ -11,7 +11,7 @@ public class visualitzarEpisodi {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
 
     }
     public String startVisualitzacio(String client,String usuari,String serie,int temporada,String episodi){

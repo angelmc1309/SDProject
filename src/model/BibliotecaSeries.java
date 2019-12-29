@@ -1,8 +1,12 @@
 package model;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+import sun.security.jca.GetInstance;
+
 import java.util.List;
 
 public class BibliotecaSeries {
+
     private List<Serie> biblioteca;
 
     public BibliotecaSeries(List<Serie> biblioteca) {
@@ -55,7 +59,7 @@ public class BibliotecaSeries {
     }
 
     public String llistarCatalegSeries(){
-        String auxiliar = "Cataleg series: \n";
+        String auxiliar = "";
         for (Serie serie: biblioteca){
             auxiliar += serie.getTitol() + "\n";
         }

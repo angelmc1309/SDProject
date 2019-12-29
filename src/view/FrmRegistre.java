@@ -9,6 +9,8 @@ Autors:
 
 package view;
 
+import controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -33,6 +35,7 @@ class FrmRegistre extends JDialog {
     private JTextField textUsername;
     private JPasswordField textPassword1;
     private JPasswordField textPassword2;
+    private Controller controlador;
 
     /**
      * Constructor de la finestra del Registre on es fixa l'aspecte d'aquesta i s'inicialitzen els components
@@ -52,6 +55,7 @@ class FrmRegistre extends JDialog {
      * Mètode que inicialitza tots els components de la GUI del Registre d'usuaris i s'afegeixen els listeners dels events per quan es fa la acció sobre els components.
      */
     private void initComponents() {
+        controlador = new Controller();
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -89,17 +93,22 @@ class FrmRegistre extends JDialog {
         // add your code here
         try {
             String contrassenya1 = new String(textPassword1.getPassword());
+            String nomReal= textNomReal.getName();
+            String dni = textDNI.getText();
+            String adreca = textAdreca.getText();
+            String username = textUsername.getText();
+
             if (!contrassenya1.equals(new String(textPassword2.getPassword()))) {
                 JOptionPane.showMessageDialog(this, "Les contrassenyes no coincideixen!\nTorna a introduir les contrassenyes.", "ERROR AL REGISTRAR", JOptionPane.ERROR_MESSAGE);
                 textPassword1.setText("");
                 textPassword2.setText("");
             }
             else{
-                //TODO Cal cridar a Controller per afegir el nou usuari
-                String info = "Usuari afegit correctament";
+                String info=controlador.addClient(username,contrassenya1,adreca,nomReal,dni);
                 JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
-                if (info.equals("Usuari afegit correctament"))
+                if (info.equals("Client afegit")) {
                     this.dispose();
+                }
                 else {
                     textUsername.setText("");
                     textPassword1.setText("");

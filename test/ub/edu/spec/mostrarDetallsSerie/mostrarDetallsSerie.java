@@ -13,7 +13,7 @@ public class mostrarDetallsSerie {
 
     @BeforeExample
     public void init() {
-        controlador = new Controller();
+        controlador = Controller.getInstance();
     }
 
     public String mostrarDetallsSerie(String idSerie){
