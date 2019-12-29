@@ -82,6 +82,13 @@ class FrmRegistre extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        textAdreca.setText("");
+        textDNI.setText("");
+        textNomReal.setText("");
+        textPassword1.setText("");
+        textPassword2.setText("");
+        textUsername.setText("");
     }
 
 
@@ -93,6 +100,7 @@ class FrmRegistre extends JDialog {
         // add your code here
         try {
             String contrassenya1 = new String(textPassword1.getPassword());
+            String contrassenya2 = new String(textPassword2.getPassword());
             String nomReal= textNomReal.getName();
             String dni = textDNI.getText();
             String adreca = textAdreca.getText();
@@ -104,15 +112,24 @@ class FrmRegistre extends JDialog {
                 textPassword2.setText("");
             }
             else{
-                String info=controlador.addClient(username,contrassenya1,adreca,nomReal,dni);
-                JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
-                if (info.equals("Client afegit")) {
-                    this.dispose();
+
+                if (contrassenya1.isEmpty() || nomReal.isEmpty() || dni.isEmpty() || adreca.isEmpty() || username.isEmpty() || contrassenya2.isEmpty()){
+                    JOptionPane.showMessageDialog(this, "falta algun camp per omplir", "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
                 }
-                else {
-                    textUsername.setText("");
-                    textPassword1.setText("");
-                    textPassword2.setText("");
+                else  {
+                    String info=controlador.addClient(username,contrassenya1,adreca,nomReal,dni);
+                    if (info.equals("Client afegit")) {
+                        JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
+                        controlador.addUsuari(username,username);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
+                        textUsername.setText("");
+                        textPassword1.setText("");
+                        textPassword2.setText("");
+                    }
+                    System.out.println("debug 2");
+
                 }
             }
         } catch (HeadlessException e) {
