@@ -65,4 +65,8 @@ public class BibliotecaSeries {
         }
         return auxiliar;
     }
+
+    public String[] getTemporadaSerie(String serie) {
+        return find(serie).getTemporades();
+    }
 }

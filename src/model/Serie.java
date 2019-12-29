@@ -83,6 +83,13 @@ public class Serie {
         return episodis;
 
     }
+
+    public String[] getTemporades() {
+
+        return (String[])temporades.values().toArray();
+
+
+    }
 }
 
 
