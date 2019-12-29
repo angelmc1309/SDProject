@@ -56,6 +56,8 @@ class FrmRegistre extends JDialog {
      * Mètode que inicialitza tots els components de la GUI del Registre d'usuaris i s'afegeixen els listeners dels events per quan es fa la acció sobre els components.
      */
     private void initComponents() {
+        controlador = new Controller();
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();

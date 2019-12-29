@@ -10,12 +10,14 @@ Autors:
 //TODO A moltes classes de la vista, més enllà d'afegir codi on estigui indicat, és probable que hagueu d'implementar nous mètodes. Sort amb la pràctica!
 package ub.edu;
 
+import ub.edu.controller.Controller;
 import ub.edu.view.UBFLIX;
 
 public class AppUBFLIX {
 
     public static void main(String[] args) {
         //TODO Cal crear la GUI a Controller, i aqui tenir instanciat el Controller
+        Controller controlador = new Controller();
         new UBFLIX();
     }
 }

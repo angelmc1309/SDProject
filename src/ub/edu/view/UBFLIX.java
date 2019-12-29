@@ -2,6 +2,8 @@ package ub.edu.view;
 
 /* Interfície Gràfica desenvolupada per: Nils Ballús, Joan Cano, David Rial i Miquel Guiot */
 
+import ub.edu.controller.Controller;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -40,6 +42,7 @@ public class UBFLIX extends JFrame{
     private HashMap<String, JPopupMenu> popupMenuTemporades;
     private DefaultTableModel tableModelVis;
     private DefaultTableModel tableModelVal;
+    private Controller controlador;
 
 
     /**
@@ -116,6 +119,7 @@ public class UBFLIX extends JFrame{
         comboBoxValorar.addItem("Usuari 3");
         inicialitzarLlistaTopVisualitzacions();
         inicialitzarLlistaTopValoracions();
+        controlador = new Controller();
     }
 
     /**

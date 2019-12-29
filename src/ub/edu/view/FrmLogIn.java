@@ -10,6 +10,8 @@ Autors:
 package ub.edu.view;
 
 
+import ub.edu.controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -26,6 +28,7 @@ class FrmLogIn extends JDialog {
     private JLabel labelUsername;
     private JLabel labelPassword;
     private JButton btnRegistrar;
+    private Controller controlador;
 
     /**
      * Constructor de la finestra del LogIn on es fixa l'aspecte d'aquesta i s'inicialitzen els components
@@ -43,6 +46,8 @@ class FrmLogIn extends JDialog {
      * Mètode que inicialitza tots els components de la GUI del LogIn i s'afegeixen els listeners dels events per quan es fa la acció sobre els botons.
      */
     private void initComponents() {
+        controlador = new Controller();
+
         btnLogIn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -85,9 +90,17 @@ class FrmLogIn extends JDialog {
     private void onOK() {
         try {
             //TODO Cal cridar a Controller per fer el LogIn
-            String info = "Log-in correcte";
-            JOptionPane.showMessageDialog(this, info, "INFORMACIÓ LOG-IN", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
+            String username, password;
+            username = textUsername.getName();
+            password = textPassword.getName();
+            if (controlador.validateClient(username,password)){
+                String info = "Log-in correcte";
+                JOptionPane.showMessageDialog(this, info, "INFORMACIÓ LOG-IN", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } else{
+                JOptionPane.showMessageDialog(this, "dades incorrectes", "ERROR LOGIN", JOptionPane.ERROR_MESSAGE);
+            }
+
 
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "FINESTRA ERROR", JOptionPane.YES_NO_OPTION);
