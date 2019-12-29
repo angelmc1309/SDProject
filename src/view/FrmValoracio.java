@@ -1,4 +1,4 @@
-package view;
+package ub.edu.view;
 
 
 import javax.swing.*;

@@ -10,7 +10,7 @@ Autors:
 //TODO A moltes classes de la vista, més enllà d'afegir codi on estigui indicat, és probable que hagueu d'implementar nous mètodes. Sort amb la pràctica!
 
 
-import view.UBFLIX;
+import ub.edu.view.UBFLIX;
 
 public class AppUBFLIX {
 

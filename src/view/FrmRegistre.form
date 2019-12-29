@@ -111,7 +111,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="hola ei"/>
+            </properties>
           </component>
           <component id="7b2c" class="javax.swing.JTextField" binding="textDNI">
             <constraints>
@@ -119,7 +121,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="46790'"/>
+            </properties>
           </component>
           <component id="23239" class="javax.swing.JTextField" binding="textAdreca">
             <constraints>
@@ -127,7 +131,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="ghjk"/>
+            </properties>
           </component>
           <component id="1bd28" class="javax.swing.JTextField" binding="textUsername">
             <constraints>
@@ -135,7 +141,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="tututu"/>
+            </properties>
           </component>
           <component id="3f839" class="javax.swing.JPasswordField" binding="textPassword1">
             <constraints>
@@ -143,7 +151,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="yuop"/>
+            </properties>
           </component>
           <component id="c903f" class="javax.swing.JPasswordField" binding="textPassword2">
             <constraints>
@@ -151,7 +161,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="yuop"/>
+            </properties>
           </component>
         </children>
       </grid>

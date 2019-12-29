@@ -7,7 +7,7 @@ Autors:
 
  */
 
-package view;
+package ub.edu.view;
 
 import controller.Controller;
 
