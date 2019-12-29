@@ -85,9 +85,11 @@ public class Serie {
     }
 
     public String[] getTemporades() {
-
-        return (String[])temporades.values().toArray();
-
+        String[] returnValue = new String[ntemporades];
+        for(int i = 0; i < ntemporades;i++){
+            returnValue[i] = (i+1)+"";
+        }
+        return returnValue;
 
     }
 }

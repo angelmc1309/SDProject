@@ -58,7 +58,7 @@ public class BibliotecaSeries {
     public String llistarCatalegSeries(){
         String auxiliar = "";
         for (Serie serie: biblioteca){
-            auxiliar += serie.getTitol() + "\n";
+            auxiliar += serie.getIdSerie() + "\n";
         }
         return auxiliar;
     }

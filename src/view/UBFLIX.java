@@ -290,7 +290,7 @@ public class UBFLIX extends JFrame{
      */
     private void refreshMyList() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1", "serie 2", "serie 3"};
+        String[] series = null;
         listMyList.setListData(series);
     }
 
