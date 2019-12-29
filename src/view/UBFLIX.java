@@ -1,4 +1,4 @@
-package ub.edu.view;
+package view;
 
 /* Interfície Gràfica desenvolupada per: Nils Ballús, Joan Cano, David Rial i Miquel Guiot */
 

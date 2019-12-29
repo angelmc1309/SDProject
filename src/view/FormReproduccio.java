@@ -7,7 +7,7 @@ Autors:
 
  */
 
-package ub.edu.view;
+package view;
 
 import javax.swing.*;
 import java.awt.*;
