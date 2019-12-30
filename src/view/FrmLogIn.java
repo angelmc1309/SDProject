@@ -125,4 +125,8 @@ class FrmLogIn extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
     }
+
+    public String getClient(){
+        return textUsername.getText();
+    }
 }

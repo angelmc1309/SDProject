@@ -242,4 +242,9 @@ public class Controller {
     public String[] getTemporadaSerie(String serie) {
         return bibliotecaSeries.getTemporadaSerie(serie);
     }
+
+    public String[] getEpisodiSerie(String serie, String temporada){
+        return bibliotecaSeries.getEpisodis(serie, temporada);
+    }
+
 }

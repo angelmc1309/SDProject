@@ -9,6 +9,8 @@ Autors:
 
 package view;
 
+import controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +102,8 @@ class FormReproduccio extends JDialog {
         timer.stop();
         int tempsVisualitzacio = (progressBar.getValue()*duracioVisualitzacio)/100;
         //TODO Cal cridar a Controller per guardar l'estat de la visualització
-        String estat = "Episodi visualitzat";
+        int tempsRestant = duracioVisualitzacio-tempsVisualitzacio;
+        String estat = Controller.getInstance().endVisualitzacio("lmento","lmento",serie,numTemporada,episodi,tempsRestant);
         JOptionPane.showMessageDialog(jPanel, estat);
         dispose();
     }

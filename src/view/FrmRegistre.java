@@ -114,7 +114,7 @@ class FrmRegistre extends JDialog {
             else{
 
                 if (contrassenya1.isEmpty() || nomReal.isEmpty() || dni.isEmpty() || adreca.isEmpty() || username.isEmpty() || contrassenya2.isEmpty()){
-                    JOptionPane.showMessageDialog(this, "falta algun camp per omplir", "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "falta algun camp per omplir", "INFORMACIÓ REGISTRE", JOptionPane.ERROR_MESSAGE);
                 }
                 else  {
                     String info=controlador.addClient(username,contrassenya1,adreca,nomReal,dni);
@@ -145,4 +145,5 @@ class FrmRegistre extends JDialog {
         if (JOptionPane.showConfirmDialog(this, "VOLS CANCELAR EL REGISTRE? ", "SORTIR REGISTRE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0)
             this.dispose();
     }
+
 }

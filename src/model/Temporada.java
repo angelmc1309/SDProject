@@ -46,4 +46,12 @@ public class Temporada {
     public Collection<Episodi> getAllEpisodis() {
         return episodis.values();
     }
+
+    public String[] getEpisodis() {
+        String[] returnValue = new String[episodis.size()];
+        for(int i = 0; i < episodis.size(); i++){
+            returnValue[i] = episodis.get(i).getNom();
+        }
+        return returnValue;
+    }
 }

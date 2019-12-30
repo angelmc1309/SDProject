@@ -66,4 +66,9 @@ public class BibliotecaSeries {
     public String[] getTemporadaSerie(String serie) {
         return find(serie).getTemporades();
     }
+
+
+    public String[] getEpisodis(String serie, String temporada) {
+        return find(serie).getEpisodis(temporada);
+    }
 }

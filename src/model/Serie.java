@@ -92,6 +92,15 @@ public class Serie {
         return returnValue;
 
     }
+
+    public String[] getEpisodis(String temporada) {
+        for (int i = 0; i < ntemporades; i++){
+            if (findTemporada(i).equals(temporada)){
+                return findTemporada(i).getEpisodis();
+            }
+        }
+        return null;
+    }
 }
 
 

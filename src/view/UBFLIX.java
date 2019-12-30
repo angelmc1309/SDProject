@@ -3,6 +3,7 @@ package view;
 /* Interfície Gràfica desenvolupada per: Nils Ballús, Joan Cano, David Rial i Miquel Guiot */
 
 import controller.Controller;
+import model.Usuari;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -113,7 +114,7 @@ public class UBFLIX extends JFrame{
             }
         });
         popupMenuTemporades = new HashMap<>();
-        comboBoxValorar.addItem("Usuari 1");
+        comboBoxValorar.addItem("lmento");
         comboBoxValorar.addItem("Usuari 2");
         comboBoxValorar.addItem("Usuari 3");
         inicialitzarLlistaTopVisualitzacions();
@@ -255,9 +256,9 @@ public class UBFLIX extends JFrame{
      */
     private void refreshEpisodis(String serie, String temporada, JMenu jm) {
         //TODO Cal cridar a Controller per refescar els episodis
-        String[] episodis = {"episodi 1","episodi 2", "episodi 3"};
+        String[] episodis = Controller.getInstance().getEpisodiSerie(serie,temporada);
         for (String episodi: episodis) {
-            String idSerie = "Id Serie";
+            String idSerie = serie;
             int numTemporada = Integer.parseInt(temporada.substring(10));
             int duracio = 30;
             int duracioVisualitzada = 0;
@@ -290,7 +291,9 @@ public class UBFLIX extends JFrame{
      */
     private void refreshMyList() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = null;
+        String usuari = comboBoxValorar.getSelectedItem().toString();
+        Controller.getInstance().afegirSerieMyList(usuari,usuari,listAll.getSelectedValue().toString());
+        String[] series = Controller.getInstance().veureMyList(usuari, usuari).split("\n");
         listMyList.setListData(series);
     }
 
@@ -299,7 +302,8 @@ public class UBFLIX extends JFrame{
      */
     private void refreshWatched() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1", "serie 2", "serie 3"};
+        String usuari = comboBoxValorar.getSelectedItem().toString();
+        String[] series = Controller.getInstance().llistarWatchedList(usuari, usuari).split("\n");
         listWatched.setListData(series);
     }
 
@@ -308,7 +312,8 @@ public class UBFLIX extends JFrame{
      */
     private void refreshContinueWatching() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1", "serie 2", "serie 3"};
+        String usuari = comboBoxValorar.getSelectedItem().toString();
+        String[] series = Controller.getInstance().llistarContinueWatching(usuari,usuari).split("\n");
         listContinueWatching.setListData(series);
     }
 
