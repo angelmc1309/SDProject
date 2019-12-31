@@ -1,0 +1,299 @@
+@startuml
+
+title __COMMAND's Class Diagram__\n
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.AssertEqualsCommand {
+              - comparator : Comparator<Object>
+              - listeners : List<AssertEqualsListener>
+              + AssertEqualsCommand()
+              + AssertEqualsCommand()
+              + addAssertEqualsListener()
+              + removeAssertEqualsListener()
+              + verify()
+              - announceFailure()
+              - announceSuccess()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.AssertFalseCommand {
+              # processFalseResult()
+              # processTrueResult()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.AssertTrueCommand {
+              # processFalseResult()
+              # processTrueResult()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          abstract class org.concordion.internal.command.BooleanCommand {
+              - listeners : List<AssertListener>
+              + addAssertListener()
+              + removeAssertListener()
+              + verify()
+              # announceFailure()
+              # announceSuccess()
+              {abstract} # processFalseResult()
+              {abstract} # processTrueResult()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.EchoCommand {
+              + verify()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.ExampleCommand {
+              - implementationStatusModifier : ImplementationStatusModifier
+              - listeners : List<ExampleListener>
+              - specificationDescriber : SpecificationDescriber
+              + addExampleListener()
+              + execute()
+              + getExamples()
+              + modifyCommandCallTree()
+              + removeExampleListener()
+              + setImplementationStatusModifier()
+              + setSpecificationDescriber()
+              {static} + setupCommandForExample()
+              # isBeforeExample()
+              - announceAfterExample()
+              - announceBeforeExample()
+              {static} - exampleDefinition()
+              - getExampleName()
+              - getImplementationStatus()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.LocalTextDecorator {
+              {static} - HREF_VARIABLE : String
+              {static} - TEXT_VARIABLE : String
+              + LocalTextDecorator()
+              # process()
+              - getHref()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          interface org.concordion.internal.command.ResultAnnouncer {
+              {abstract} + announce()
+              {abstract} + announceException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.RunCommand {
+              - listeners : List<RunListener>
+              - runStrategy : RunStrategy
+              - runnerFactory : RunnerFactory
+              + RunCommand()
+              + addRunListener()
+              + execute()
+              + removeRunListener()
+              + setRunStrategy()
+              + setRunnerFactory()
+              - announceRunStarted()
+              - newRunResultAnnouncer()
+              - updateHrefSuffix()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.SequentialRunStrategy {
+              + call()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.SetCommand {
+              - listeners : List<SetListener>
+              + addSetListener()
+              + removeSetListener()
+              + setUp()
+              - announceSetCompleted()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.SpecificationCommand {
+              - listeners : List<SpecificationProcessingListener>
+              - outerExampleListeners : List<OuterExampleListener>
+              - specificationDescriber : SpecificationDescriber
+              + addOuterExampleListener()
+              + addSpecificationListener()
+              + execute()
+              + finish()
+              + getSpecificationDescription()
+              + removeOuterExampleListener()
+              + removeSpecificationListener()
+              + setSpecificationDescriber()
+              + setUp()
+              + start()
+              + verify()
+              - announceAfterOuterExampleEvent()
+              - announceAfterProcessingEvent()
+              - announceBeforeOuterExampleEvent()
+              - announceBeforeProcessingEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.ThrowableCatchingDecorator {
+              - failFastExceptions : List<Class<? extends Throwable>>
+              - listeners : List<ThrowableCaughtListener>
+              + ThrowableCatchingDecorator()
+              + addThrowableListener()
+              + removeThrowableListener()
+              # process()
+              - announceThrowableCaught()
+              - rethrowFailFastException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.ThrowableCaughtPublisher {
+              - listeners : List<ThrowableCaughtListener>
+              + addThrowableListener()
+              + removeThrowableListener()
+              + throwableCaught()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace command {
+          class org.concordion.internal.command.VerifyRowsCommand {
+              {static} - DEFAULT_STRATEGIES_PACKAGE : String
+              {static} - DEFAULT_STRATEGIES_SUFFIX : String
+              - listeners : List<VerifyRowsListener>
+              + addVerifyRowsListener()
+              + removeVerifyRowsListener()
+              + verify()
+              - detectStrategyClass()
+              - findFirstExistingClass()
+              - newStrategyInstance()
+          }
+        }
+      }
+    }
+  }
+  
+
+  org.concordion.internal.command.SequentialRunStrategy .up.|> RunStrategy
+  org.concordion.internal.command.ThrowableCaughtPublisher .up.|> ThrowableCaughtListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

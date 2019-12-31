@@ -1,0 +1,954 @@
+@startuml
+
+title __INTERNAL's Class Diagram__\n
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        abstract class org.concordion.internal.AbstractResultSummary {
+            - implementationStatus : ImplementationStatus
+            - specificationDescription : String
+            + getImplementationStatus()
+            + getImplementationStatusChecker()
+            + getSpecificationDescription()
+            + isForExample()
+            + print()
+            + printCountsToString()
+            + setImplementationStatus()
+            + setSpecificationDescription()
+            ~ printToString()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.BooleanExpectationChecker {
+            + isAcceptable()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.BrowserStyleWhitespaceComparator {
+            - chainOfCheckers : ChainOfExpectationCheckers
+            + BrowserStyleWhitespaceComparator()
+            + compare()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.CatchAllExpectationChecker {
+            + isAcceptable()
+            {static} + normalize()
+            {static} - convertObjectToString()
+            {static} - processLineContinuations()
+            {static} - replaceMultipleWhitespaceWithOneSpace()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ChainOfExpectationCheckers {
+            - checkers : List<ExpectationChecker>
+            + add()
+            + isAcceptable()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ClassNameBasedSpecificationLocator {
+            + ClassNameBasedSpecificationLocator()
+            + ClassNameBasedSpecificationLocator()
+            + locateSpecification()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ClassPathSource {
+            + canFind()
+            + createInputStream()
+            + readAsString()
+            + readResourceAsString()
+            + toString()
+            - getResourceAsStream()
+            - readAsString()
+            - readAsString()
+            - readResourceAsString()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.CommandRegistry {
+            - commandMap : Map<Object, Command>
+            + createCommand()
+            + register()
+            - makeKey()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ConcordionAssertionError {
+            - rs : ResultSummary
+            {static} - serialVersionUID : long
+            + ConcordionAssertionError()
+            + getResultSummary()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ConcordionBuilder {
+            {static} + NAMESPACE_CONCORDION_2007 : String
+            {static} - EMBEDDED_STYLESHEET_RESOURCE : String
+            {static} - PROPERTY_EXTENSIONS : String
+            {static} - PROPERTY_OUTPUT_DIR : String
+            - assertEqualsCommand : AssertEqualsCommand
+            - assertFalseCommand : AssertFalseCommand
+            - assertTrueCommand : AssertTrueCommand
+            {static} - baseOutputDir : File
+            - breadcrumbRenderer : BreadcrumbRenderer
+            - builtAlready : boolean
+            - commandRegistry : CommandRegistry
+            - copySourceHtmlTarget : FileTarget
+            - documentParser : DocumentParser
+            - echoCommand : EchoCommand
+            - evaluatorFactory : EvaluatorFactory
+            - exampleCommand : ExampleCommand
+            - executeCommand : ExecuteCommand
+            - failFastExceptions : List<Class<? extends Throwable>>
+            - fixtureType : FixtureType
+            - listeners : List<ConcordionBuildListener>
+            - markdownConverter : MarkdownConverter
+            - pageFooterRenderer : SpecificationProcessingListener
+            - resourceToCopyMap : LinkedHashMap<String, Resource>
+            - runCommand : RunCommand
+            - runnerFactory : RunnerFactory
+            - setCommand : SetCommand
+            - sources : Map<SourceType, Source>
+            - specificationCommand : SpecificationCommand
+            - specificationConverters : Set<SpecificationConverter>
+            - specificationLocator : SpecificationLocator
+            - specificationProcessingListeners : List<SpecificationProcessingListener>
+            - specificationReader : SpecificationReader
+            - specificationTypes : List<SpecificationType>
+            - target : Target
+            - throwableCaughtListeners : List<ThrowableCaughtListener>
+            - throwableListenerPublisher : ThrowableCaughtPublisher
+            - verifyRowsCommand : VerifyRowsCommand
+            - xhtmlConverter : XhtmlConverter
+            + build()
+            {static} + getBaseOutputDir()
+            + withAssertEqualsListener()
+            + withAssertFalseListener()
+            + withAssertTrueListener()
+            + withBreadcrumbRenderer()
+            + withBuildListener()
+            + withCommand()
+            + withDocumentParsingListener()
+            + withEmbeddedCSS()
+            + withEmbeddedCSS()
+            + withEmbeddedJavaScript()
+            + withEvaluatorFactory()
+            + withExampleListener()
+            + withExecuteListener()
+            + withFailFast()
+            + withFixture()
+            + withImplementationStatusModifier()
+            + withLinkedCSS()
+            + withLinkedJavaScript()
+            + withOuterExampleListener()
+            + withPageFooterRenderer()
+            + withResource()
+            + withResources()
+            + withRunListener()
+            + withRunStrategy()
+            + withRunnerFactory()
+            + withSetListener()
+            + withSource()
+            + withSource()
+            + withSpecificationLocator()
+            + withSpecificationProcessingListener()
+            + withSpecificationType()
+            + withTarget()
+            + withThrowableListener()
+            + withVerifyRowsListener()
+            ~ configureWith()
+            - addDefaultStyling()
+            - addExtension()
+            - addExtensions()
+            - addSpecificationListeners()
+            - addThrowableListeners()
+            - announceBuildCompleted()
+            - copyResources()
+            - expandSystemProperties()
+            - withApprovedCommand()
+            - withResources()
+            - withThrowableListener()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ConcordionOptionsParser {
+            {static} + convertNamespacePairsToMap()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ConfigurationException {
+            {static} - serialVersionUID : long
+            + ConfigurationException()
+            + ConfigurationException()
+            + ConfigurationException()
+            + ConfigurationException()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.DocumentParser {
+            - commandFactory : CommandFactory
+            - listeners : List<DocumentParsingListener>
+            + DocumentParser()
+            + addDocumentParsingListener()
+            + parse()
+            + removeDocumentParsingListener()
+            - announceBeforeParsing()
+            - createCommand()
+            - createSpecificationCommand()
+            - generateCommandCallTree()
+            - modifyCommandCallTree()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        interface org.concordion.internal.ExpectationChecker {
+            {abstract} + isAcceptable()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        interface org.concordion.internal.ExpressionValidator {
+            {abstract} + validate()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FailFastException {
+            {static} - serialVersionUID : long
+            + FailFastException()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FileTarget {
+            {static} - BUFFER_SIZE : int
+            {static} - FRESH_ENOUGH_MILLIS : long
+            - baseDir : File
+            + FileTarget()
+            + copyTo()
+            + delete()
+            + exists()
+            + getFile()
+            + getOutputStream()
+            + resolvedPathFor()
+            + write()
+            - copy()
+            - createOutputStream()
+            - isFreshEnough()
+            - mkdirs()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FixtureInstance {
+            - fixtureClass : Class<? extends Object>
+            - fixtureObject : Object
+            - fixtureType : FixtureType
+            - scopedFieldStore : ScopedFieldStore
+            + FixtureInstance()
+            + afterExample()
+            + afterProcessExample()
+            + afterSpecification()
+            + afterSuite()
+            + beforeExample()
+            + beforeProcessExample()
+            + beforeSpecification()
+            + beforeSuite()
+            + getFixtureObject()
+            + getFixtureType()
+            + setupForRun()
+            + toString()
+            - invokeMethods()
+            - invokeMethods()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FixtureOptionsLoader {
+            + addOptions()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FixtureRunner {
+            - concordion : Concordion
+            {static} - runResultsCache : RunResultsCache
+            + FixtureRunner()
+            + getConcordion()
+            + run()
+            + run()
+            - printResultSummary()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FixtureSpecificationMapper {
+            {static} - serviceLoaderHolder : ThreadLocal
+            {static} + findFixtureClass()
+            {static} + removeSuffixFromFixtureName()
+            {static} + toSpecificationResource()
+            {static} - getFixtureClass()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.FixtureType {
+            - classHierarchyParentFirst : ArrayList<Class<?>>
+            - fixtureClass : Class<?>
+            + FixtureType()
+            + declaresFailFast()
+            + declaresFullOGNL()
+            + declaresResources()
+            + declaresStatus()
+            + getClassHierarchyParentFirst()
+            + getClassPathRoots()
+            + getDeclaredConcordionOptionsParentFirst()
+            + getDeclaredFailFastExceptions()
+            + getDeclaredImplementationStatus()
+            + getDescription()
+            + getFixtureClass()
+            + getFixturePathWithoutSuffix()
+            - removeSuffix()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        enum ImplementationStatusChecker {
+          EXPECTED_TO_FAIL
+          EXPECTED_TO_PASS
+          IGNORED
+          UNIMPLEMENTED
+          implementationStatus
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.InvalidExpressionException {
+            {static} - serialVersionUID : long
+            - t : Throwable
+            + InvalidExpressionException()
+            + InvalidExpressionException()
+            + getStackTrace()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ListEntry {
+            - listElement : Element
+            + ListEntry()
+            + getElement()
+            + isItem()
+            + isList()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ListSupport {
+            - listCommandCall : CommandCall
+            + ListSupport()
+            + getListEntries()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.MultiPattern {
+            - patterns : List<Pattern>
+            {static} + fromRegularExpressions()
+            + matches()
+            - MultiPattern()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.OgnlEvaluator {
+            - ognlContext : OgnlContext
+            - rootObject : Object
+            + OgnlEvaluator()
+            + evaluate()
+            + getVariable()
+            + setVariable()
+            - assertStartsWithHash()
+            - invalidExpressionException()
+            - putVariable()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.OgnlEvaluatorFactory {
+            + createEvaluator()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        interface org.concordion.internal.ParameterSupplier {
+            {abstract} + getValueForParameter()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ParsingException {
+            {static} - serialVersionUID : long
+            - sourceDescription : String
+            + ParsingException()
+            + ParsingException()
+            + getMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ResourceFinder {
+            - fixtureType : FixtureType
+            - includeDefaultStyling : boolean
+            + ResourceFinder()
+            + getResourcesToCopy()
+            + includeDefaultStyling()
+            - findMatchingFiles()
+            - getAbsoluteSearchPath()
+            - getPackageName()
+            - getResourcesToAdd()
+            - isAnnotationDeclared()
+            - isSearchRoot()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ResourceFinder.WildcardFilter {
+            ~ r : Pattern
+            + WildcardFilter()
+            + accept()
+            - createRegexFromGlob()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.ResourceToCopy {
+            + insertType : InsertType
+            # fileName : String
+            + ResourceToCopy()
+            + getName()
+            + getResourceName()
+            + isScript()
+            + isStyleSheet()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.Row {
+            - rowElement : Element
+            + deepClone()
+            + getCells()
+            + getElement()
+            + getIndexOfCell()
+            + isHeaderRow()
+            ~ Row()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        interface org.concordion.internal.RunOutput {
+            {abstract} + getActualResultSummary()
+            {abstract} + getModifiedResultSummary()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SimpleEvaluator {
+            {static} - EVALUATION_PATTERNS : MultiPattern
+            {static} - LHS_VARIABLE_PATTERN : String
+            {static} - METHOD_CALL_NO_PARAMS : String
+            {static} - METHOD_CALL_PARAMS : String
+            {static} - METHOD_NAME_PATTERN : String
+            {static} - PROPERTY_NAME_PATTERN : String
+            {static} - RHS_VARIABLE_PATTERN : String
+            {static} - SET_VARIABLE_PATTERNS : MultiPattern
+            {static} - STRING_PATTERN : String
+            {static} - TERNARY_STRING_RESULT : String
+            + SimpleEvaluator()
+            + evaluate()
+            + setVariable()
+            {static} + validateEvaluationExpression()
+            {static} + validateSetVariableExpression()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SimpleEvaluatorFactory {
+            + createEvaluator()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SingleParameterSupplier {
+            - methodAnnotationClass : Class<? extends Annotation>
+            - parameterAnnotation : Class<? extends Annotation>
+            - parameterValue : Object
+            + SingleParameterSupplier()
+            + getValueForParameter()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SingleResultSummary {
+            - result : Result
+            + SingleResultSummary()
+            + SingleResultSummary()
+            + assertIsSatisfied()
+            + equals()
+            + getExceptionCount()
+            + getFailureCount()
+            + getIgnoredCount()
+            + getResult()
+            + getSuccessCount()
+            + hasExceptions()
+            + hashCode()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        interface org.concordion.internal.SpecificationDescriber {
+            {abstract} + getDescription()
+            {abstract} + getDescription()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SpecificationToSpecificationByExampleAdaptor {
+            - specification : Specification
+            + SpecificationToSpecificationByExampleAdaptor()
+            + finish()
+            + getDescription()
+            + getExampleNames()
+            + hasExampleCommandNodes()
+            + process()
+            + processExample()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SpecificationType {
+            - converter : SpecificationConverter
+            - typeSuffix : String
+            + SpecificationType()
+            + getConverter()
+            + getTypeSuffix()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SummarizingResultRecorder {
+            - failFastException : FailFastException
+            - forExample : boolean
+            - recordedResults : List<Result>
+            + SummarizingResultRecorder()
+            + SummarizingResultRecorder()
+            + assertIsSatisfied()
+            + getExceptionCount()
+            + getFailFastException()
+            + getFailureCount()
+            + getIgnoredCount()
+            + getSuccessCount()
+            + getTotalCount()
+            + hasExceptions()
+            + isForExample()
+            + record()
+            + record()
+            + recordFailFastException()
+            + reset()
+            + setFailFastException()
+            + setForExample()
+            - getCount()
+            - recordMultipleResults()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.SystemPropertiesRunnerFactory {
+            + createRunner()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.Table {
+            - tableElement : Element
+            + Table()
+            + addDetailRow()
+            + getDetailRows()
+            + getLastHeaderRow()
+            - getColumnCount()
+            - getHeaderRows()
+            - getRows()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.TableSupport {
+            - commandCallByColumn : Map<Integer, CommandCall>
+            - overrides : Map<Integer, Element>
+            - table : Table
+            - tableCommandCall : CommandCall
+            + TableSupport()
+            + addDetailRow()
+            + copyCommandCallsTo()
+            + getColumnCount()
+            + getDetailRows()
+            + getLastHeaderRow()
+            - populateCommandCallByColumnMap()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.UnableToBuildConcordionException {
+            {static} - serialVersionUID : long
+            + UnableToBuildConcordionException()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.XMLParser {
+            + parse()
+            + parse()
+            {static} + parse()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.XMLSpecification {
+            {static} + OUTER_EXAMPLE_NAME : String
+            {static} + OUTER_EXAMPLE_SUFFIX : String
+            - beforeExamples : List<CommandCall>
+            - examples : List<ExampleCommandCall>
+            - rootCommandNode : CommandCall
+            - specificationCommand : SpecificationCommand
+            - specificationDescription : String
+            + XMLSpecification()
+            + finish()
+            + getDescription()
+            + getExampleNames()
+            + hasExampleCommandNodes()
+            + process()
+            + processExample()
+            + processNode()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        class org.concordion.internal.XMLSpecificationReader {
+            - copySourceHtmlTarget : Target
+            - documentParser : DocumentParser
+            - specificationConverter : SpecificationConverter
+            - specificationSource : Source
+            - xmlParser : XMLParser
+            + XMLSpecificationReader()
+            + canFindSpecification()
+            + readSpecification()
+            + setCopySourceHtmlTarget()
+            + setSpecificationConverter()
+            - asHtmlStream()
+            - asString()
+            - copySourceHtml()
+        }
+      }
+    }
+  }
+  
+
+  org.concordion.internal.AbstractResultSummary .up.|> ResultSummary
+  org.concordion.internal.BooleanExpectationChecker .up.|> ExpectationChecker
+  org.concordion.internal.BrowserStyleWhitespaceComparator .up.|> Comparator
+  org.concordion.internal.CatchAllExpectationChecker .up.|> ExpectationChecker
+  org.concordion.internal.ChainOfExpectationCheckers .up.|> ExpectationChecker
+  org.concordion.internal.ClassNameBasedSpecificationLocator .up.|> SpecificationLocator
+  org.concordion.internal.ClassPathSource .up.|> Source
+  org.concordion.internal.CommandRegistry .up.|> CommandFactory
+  org.concordion.internal.ConcordionBuilder .up.|> ConcordionExtender
+  org.concordion.internal.FileTarget .up.|> Target
+  org.concordion.internal.FixtureInstance .up.|> Fixture
+  org.concordion.internal.FixtureType .up.|> FixtureDeclarations
+  org.concordion.internal.OgnlEvaluator .up.|> Evaluator
+  org.concordion.internal.OgnlEvaluatorFactory .up.|> EvaluatorFactory
+  org.concordion.internal.ResourceFinder +-down- org.concordion.internal.ResourceFinder.WildcardFilter
+  org.concordion.internal.ResourceFinder.WildcardFilter .up.|> FilenameFilter
+  org.concordion.internal.SimpleEvaluatorFactory .up.|> EvaluatorFactory
+  org.concordion.internal.SingleParameterSupplier .up.|> ParameterSupplier
+  org.concordion.internal.SingleResultSummary .up.|> ResultSummary
+  org.concordion.internal.SpecificationToSpecificationByExampleAdaptor .up.|> SpecificationByExample
+  org.concordion.internal.SummarizingResultRecorder .up.|> ResultRecorder
+  org.concordion.internal.SummarizingResultRecorder .up.|> ResultSummary
+  org.concordion.internal.SystemPropertiesRunnerFactory .up.|> RunnerFactory
+  org.concordion.internal.XMLSpecification .up.|> SpecificationByExample
+  org.concordion.internal.XMLSpecificationReader .up.|> SpecificationReader
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

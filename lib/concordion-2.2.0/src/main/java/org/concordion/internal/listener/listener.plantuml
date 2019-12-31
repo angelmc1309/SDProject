@@ -1,0 +1,310 @@
+@startuml
+
+title __LISTENER's Class Diagram__\n
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.AssertResultRenderer {
+              + failureReported()
+              + successReported()
+              - convertToString()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.BreadcrumbRenderer {
+              {static} - breadcrumbWordingCache : Map<Resource, String>
+              - specificationSource : Source
+              - specificationTypes : List<SpecificationType>
+              - xmlParser : XMLParser
+              + BreadcrumbRenderer()
+              + afterProcessingSpecification()
+              + beforeProcessingSpecification()
+              - appendBreadcrumbsTo()
+              {static} - capitalize()
+              - createBreadcrumbElement()
+              {static} - deCamelCase()
+              - getBreadcrumbWording()
+              - getBreadcrumbWordingForResource()
+              - getDocumentBody()
+              - getIndexPageName()
+              {static} - isBlank()
+              - prependBreadcrumb()
+              - stripExtension()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.DocumentStructureImprover {
+              + beforeParsing()
+              - copyNodesBeforeBodyIntoHead()
+              - hasHeadSection()
+              - isBodySection()
+              - nodesBeforeBody()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.FixtureExampleHook {
+              + afterExample()
+              + afterOuterExample()
+              + beforeExample()
+              + beforeOuterExample()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.JavaScriptEmbedder {
+              - javaScript : String
+              + JavaScriptEmbedder()
+              + beforeParsing()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.JavaScriptLinker {
+              - javaScriptResource : Resource
+              - script : Element
+              + JavaScriptLinker()
+              + afterProcessingSpecification()
+              + beforeParsing()
+              + beforeProcessingSpecification()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.MetadataCreator {
+              + beforeParsing()
+              - addContentTypeMetadata()
+              - hasContentTypeMetadata()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.PageFooterRenderer {
+              {static} # CONCORDION_WEBSITE_URL : String
+              - startMillis : long
+              + PageFooterRenderer()
+              + afterProcessingSpecification()
+              + beforeProcessingSpecification()
+              # addDateGeneratedAt()
+              # addResultsGeneratedBy()
+              - addFooterToDocument()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.ResourceReferenceRemover {
+              - sourceFiles : List<ResourceToCopy>
+              + ResourceReferenceRemover()
+              + beforeParsing()
+              - removeExistingScripts()
+              - removeExistingStyling()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.RunResultRenderer {
+              + RunResultRenderer()
+              + failureReported()
+              + ignoredReported()
+              + runStarted()
+              + successReported()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.SpecificationExporter {
+              {static} - XML_DECLARATION : String
+              - target : Target
+              + SpecificationExporter()
+              + afterProcessingSpecification()
+              + beforeProcessingSpecification()
+              + getDescription()
+              + getDescription()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.StylesheetEmbedder {
+              - appendChild : boolean
+              - stylesheetContent : String
+              + StylesheetEmbedder()
+              + StylesheetEmbedder()
+              + beforeParsing()
+              - updateConcordionNamespacePrefix()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.StylesheetLinker {
+              - link : Element
+              - stylesheetResource : Resource
+              + StylesheetLinker()
+              + afterProcessingSpecification()
+              + beforeParsing()
+              + beforeProcessingSpecification()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.ThrowableRenderer {
+              {static} - TOGGLING_SCRIPT_RESOURCE_PATH : String
+              - buttonId : long
+              - resourceSource : Source
+              - rootElementsWithScript : Set<Element>
+              + ThrowableRenderer()
+              + throwableCaught()
+              - ensureDocumentHasTogglingScript()
+              - exceptionMessage()
+              - expectedSpan()
+              - recursivelyAppendStackTrace()
+              - stackTrace()
+              - stackTraceElement()
+              - stackTraceTogglingButton()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace internal {
+        namespace listener {
+          class org.concordion.internal.listener.VerifyRowsResultRenderer {
+              + expressionEvaluated()
+              + missingRow()
+              + surplusRow()
+          }
+        }
+      }
+    }
+  }
+  
+
+  org.concordion.internal.listener.AssertResultRenderer .up.|> AssertEqualsListener
+  org.concordion.internal.listener.AssertResultRenderer .up.|> AssertFalseListener
+  org.concordion.internal.listener.AssertResultRenderer .up.|> AssertTrueListener
+  org.concordion.internal.listener.BreadcrumbRenderer .up.|> SpecificationProcessingListener
+  org.concordion.internal.listener.DocumentStructureImprover .up.|> DocumentParsingListener
+  org.concordion.internal.listener.FixtureExampleHook .up.|> ExampleListener
+  org.concordion.internal.listener.FixtureExampleHook .up.|> OuterExampleListener
+  org.concordion.internal.listener.JavaScriptEmbedder .up.|> DocumentParsingListener
+  org.concordion.internal.listener.JavaScriptLinker .up.|> DocumentParsingListener
+  org.concordion.internal.listener.JavaScriptLinker .up.|> SpecificationProcessingListener
+  org.concordion.internal.listener.MetadataCreator .up.|> DocumentParsingListener
+  org.concordion.internal.listener.PageFooterRenderer .up.|> SpecificationProcessingListener
+  org.concordion.internal.listener.ResourceReferenceRemover .up.|> DocumentParsingListener
+  org.concordion.internal.listener.RunResultRenderer .up.|> RunListener
+  org.concordion.internal.listener.SpecificationExporter .up.|> SpecificationDescriber
+  org.concordion.internal.listener.SpecificationExporter .up.|> SpecificationProcessingListener
+  org.concordion.internal.listener.StylesheetEmbedder .up.|> DocumentParsingListener
+  org.concordion.internal.listener.StylesheetLinker .up.|> DocumentParsingListener
+  org.concordion.internal.listener.StylesheetLinker .up.|> SpecificationProcessingListener
+  org.concordion.internal.listener.ThrowableRenderer .up.|> ThrowableCaughtListener
+  org.concordion.internal.listener.VerifyRowsResultRenderer .up.|> VerifyRowsListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

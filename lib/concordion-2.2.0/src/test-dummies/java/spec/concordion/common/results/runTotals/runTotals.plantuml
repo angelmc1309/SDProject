@@ -1,0 +1,228 @@
+@startuml
+
+title __RUNTOTALS's Class Diagram__\n
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.Annotations {
+              + rule : TestRule
+              - beforeCalled : boolean
+              {static} - beforeClassCalled : boolean
+              - ruleFieldInvoked : boolean
+              - ruleMethodInvoked : boolean
+              + before()
+              {static} + beforeClass()
+              + ruleMethod()
+              + wasBeforeCalled()
+              + wasBeforeClassCalled()
+              + wasRuleFieldInvoked()
+              + wasRuleMethodInvoked()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.ExpectedToFailTest {
+              + getSuccessString()
+              + throwException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.ExpectedToFailWithExampleFixture {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.IgnoredTest {
+              + getSuccessString()
+              + throwException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.InvalidHTMLTest {
+              + runTotalsExtension : RunTotalsExtension
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.JUnit3RunTotalsTest {
+              + getSuccessString()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.JUnit4RunTotalsTest {
+              + getSuccessString()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.MixedSuccessesAndFailures {
+              + getSuccessString()
+              + throwException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.RuleWithCallback {
+              - callback : Statement
+              + RuleWithCallback()
+              + apply()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.RuleWithCallback.CompoundStatement {
+              ~ statement1 : Statement
+              ~ statement2 : Statement
+              + CompoundStatement()
+              + evaluate()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.RunSomeOthers {
+              + runTotalsExtension : RunTotalsExtension
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.RunTotalsExtension {
+              + addTo()
+              + failureReported()
+              + ignoredReported()
+              + runStarted()
+              + successReported()
+              + throwableCaught()
+              - writeText()
+              - writeText()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.UnimplementedTest {
+              + getSuccessString()
+              + throwException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.results {
+        namespace runTotals {
+          class spec.concordion.common.results.runTotals.UnimplementedWithAssertTest {
+              + doTest()
+              + getSuccessString()
+              + throwException()
+          }
+        }
+      }
+    }
+  }
+  
+
+  spec.concordion.common.results.runTotals.RuleWithCallback .up.|> TestRule
+  spec.concordion.common.results.runTotals.RuleWithCallback +-down- spec.concordion.common.results.runTotals.RuleWithCallback.CompoundStatement
+  spec.concordion.common.results.runTotals.RunTotalsExtension .up.|> ConcordionExtension
+  spec.concordion.common.results.runTotals.RunTotalsExtension .up.|> RunListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

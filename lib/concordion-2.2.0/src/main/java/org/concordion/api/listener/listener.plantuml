@@ -1,0 +1,486 @@
+@startuml
+
+title __LISTENER's Class Diagram__\n
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          abstract class org.concordion.api.listener.AbstractElementEvent {
+              - element : Element
+              + AbstractElementEvent()
+              + getElement()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          abstract class org.concordion.api.listener.AbstractRunEvent {
+              - element : Element
+              - resultSummary : ResultSummary
+              + AbstractRunEvent()
+              + AbstractRunEvent()
+              + getElement()
+              + getResultSummary()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.AssertEqualsListener {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.AssertFailureEvent {
+              # actual : Object
+              # expected : String
+              + AssertFailureEvent()
+              + getActual()
+              + getExpected()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.AssertFalseListener {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.AssertListener {
+              {abstract} + failureReported()
+              {abstract} + successReported()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.AssertSuccessEvent {
+              + AssertSuccessEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.AssertTrueListener {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.ConcordionBuildEvent {
+              - target : Target
+              + ConcordionBuildEvent()
+              + getTarget()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.ConcordionBuildListener {
+              {abstract} + concordionBuilt()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.DocumentParsingListener {
+              {abstract} + beforeParsing()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.ExampleEvent {
+              - element : Element
+              - exampleName : String
+              - fixture : Fixture
+              - resultSummary : ResultSummary
+              + ExampleEvent()
+              + getElement()
+              + getExampleName()
+              + getFixture()
+              + getResultSummary()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.ExampleListener {
+              {abstract} + afterExample()
+              {abstract} + beforeExample()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.ExecuteEvent {
+              + ExecuteEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.ExecuteListener {
+              {abstract} + executeCompleted()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.ExpressionEvaluatedEvent {
+              + ExpressionEvaluatedEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.MissingRowEvent {
+              - rowElement : Element
+              + MissingRowEvent()
+              + getRowElement()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.OuterExampleEvent {
+              - element : Element
+              - exampleName : String
+              - fixture : Fixture
+              - resultSummary : ResultSummary
+              + OuterExampleEvent()
+              + getElement()
+              + getExampleName()
+              + getFixture()
+              + getResultSummary()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.OuterExampleListener {
+              {abstract} + afterOuterExample()
+              {abstract} + beforeOuterExample()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.RunFailureEvent {
+              + RunFailureEvent()
+              + RunFailureEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.RunIgnoreEvent {
+              + RunIgnoreEvent()
+              + RunIgnoreEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.RunListener {
+              {abstract} + failureReported()
+              {abstract} + ignoredReported()
+              {abstract} + runStarted()
+              {abstract} + successReported()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.RunStartedEvent {
+              - element : Element
+              - href : String
+              + RunStartedEvent()
+              + getElement()
+              + getHref()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.RunSuccessEvent {
+              + RunSuccessEvent()
+              + RunSuccessEvent()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.SetEvent {
+              - expression : String
+              + SetEvent()
+              + getExpression()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.SetListener {
+              {abstract} + setCompleted()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.SpecificationProcessingEvent {
+              - resource : Resource
+              - rootElement : Element
+              + SpecificationProcessingEvent()
+              + getResource()
+              + getRootElement()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.SpecificationProcessingListener {
+              {abstract} + afterProcessingSpecification()
+              {abstract} + beforeProcessingSpecification()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.SurplusRowEvent {
+              - rowElement : Element
+              + SurplusRowEvent()
+              + getRowElement()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          class org.concordion.api.listener.ThrowableCaughtEvent {
+              - expression : String
+              - throwable : Throwable
+              + ThrowableCaughtEvent()
+              + getExpression()
+              + getThrowable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.ThrowableCaughtListener {
+              {abstract} + throwableCaught()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        namespace listener {
+          interface org.concordion.api.listener.VerifyRowsListener {
+              {abstract} + expressionEvaluated()
+              {abstract} + missingRow()
+              {abstract} + surplusRow()
+          }
+        }
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

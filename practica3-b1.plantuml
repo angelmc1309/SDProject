@@ -1,0 +1,275 @@
+@startuml
+
+title __TEST_MOCK_UBFLIX's Class Diagram__\n
+
+  namespace ub.edu.controller {
+    class ub.edu.controller.Controller {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Actor {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.BibliotecaSeries {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.CarteraClients {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Client {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.DescripcioEpisodi {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.DetallsSerie {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Director {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Episodi {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.EstatVisualitzacio {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.MyList {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Perfil {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Productora {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Serie {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Temporada {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Usuari {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    abstract class ub.edu.model.Valoracions {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.ValoracionsEstrelles {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.ValoracionsThumb {
+    }
+  }
+  
+
+  namespace ub.edu.model {
+    class ub.edu.model.Visualitzacio {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAO {
+    }
+  }
+  
+
+
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOClient {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOEpisodi {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOFavorits {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOSerie {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOTemporada {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOUsuari {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOValoracions {
+    }
+  }
+  
+
+  namespace ub.edu.resources.dao {
+    interface ub.edu.resources.dao.DAOVisualitzacio {
+    }
+  }
+  
+
+
+  
+
+  namespace ub.edu.resources.service {
+    interface ub.edu.resources.service.AbstractFactoryData {
+    }
+  }
+  
+
+  namespace ub.edu.resources.service {
+    class ub.edu.resources.service.DataService {
+    }
+  }
+  
+
+  namespace ub.edu.resources.service {
+    class ub.edu.resources.service.FactoryMOCK {
+    }
+  }
+  
+
+  ub.edu.controller.Controller o-- ub.edu.model.BibliotecaSeries : bibliotecaSeries
+  ub.edu.controller.Controller o-- ub.edu.model.CarteraClients : carteraClients
+  ub.edu.controller.Controller o-- ub.edu.resources.service.DataService : dataService
+  ub.edu.controller.Controller o-- ub.edu.resources.service.AbstractFactoryData : factory
+  ub.edu.model.DetallsSerie o-- ub.edu.model.Productora : productora
+  ub.edu.model.Episodi o-- ub.edu.model.DescripcioEpisodi : descripcioEpisodi
+  ub.edu.model.Serie o-- ub.edu.model.DetallsSerie : detallsSerie
+  ub.edu.model.Usuari o-- ub.edu.model.MyList : myList
+  ub.edu.model.Usuari o-- ub.edu.model.Perfil : perfil
+  ub.edu.model.ValoracionsEstrelles -up-|> ub.edu.model.Valoracions
+  ub.edu.model.ValoracionsThumb -up-|> ub.edu.model.Valoracions
+  ub.edu.model.Visualitzacio o-- ub.edu.model.EstatVisualitzacio : estat
+
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOClient : clientDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOEpisodi : episodiDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOFavorits : favoritsDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOSerie : serieDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOTemporada : temporadaDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOUsuari : usuariDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOValoracions : valoracionsDAO
+  ub.edu.resources.service.DataService o-- ub.edu.resources.dao.DAOVisualitzacio : visualitzacioDAO
+  ub.edu.resources.service.FactoryMOCK .up.|> ub.edu.resources.service.AbstractFactoryData
+  ub.edu.model.Client *-- ub.edu.model.Usuari : LlistatUsuaris
+  ub.edu.model.CarteraClients *-- ub.edu.model.Client : composat de clients
+  ub.edu.model.BibliotecaSeries *-- ub.edu.model.Serie: composat de Series
+  ub.edu.model.Serie *-- ub.edu.model.Temporada: composat de temporades
+  ub.edu.model.Temporada *-- ub.edu.model.Episodi: composat d'episodis
+  ub.edu.model.DetallsSerie o-- ub.edu.model.Director
+  ub.edu.model.DetallsSerie o-- ub.edu.model.Actor
+  ub.edu.model.Usuari o-- ub.edu.model.Valoracions
+  ub.edu.model.Usuari o-- ub.edu.model.Visualitzacio
+  ub.edu.resources.dao.DAOClient --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOVisualitzacio --|> ub.edu.resources.dao.DAO
+   ub.edu.resources.dao.DAOValoracions --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOUsuari --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOEpisodi --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOFavorits --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOSerie --|> ub.edu.resources.dao.DAO
+  ub.edu.resources.dao.DAOTemporada --|> ub.edu.resources.dao.DAO
+
+    namespace ub.edu.model{
+        class ub.edu.model.LoggedUser
+    }
+    namespace ub.edu.model{
+            class ub.edu.model.LoggedClient
+        }
+    namespace ub.edu.model{
+        interface ub.edu.model.Subject
+    }
+     ub.edu.model.LoggedUser --|> ub.edu.model.Subject
+     ub.edu.model.LoggedClient --|> ub.edu.model.Subject
+    namespace ub.edu.view{
+        class ub.edu.view.UBFLIX
+    }
+    ub.edu.controller.Controller -- ub.edu.view.UBFLIX
+    ub.edu.view.Observer --|> ub.edu.view.UBFLIX
+    ub.edu.model.Subject -- ub.edu.view.Observer : notifica
+    ub.edu.controller -- ub.edu.model.LoggedUser
+    ub.edu.controller -- ub.edu.model.LoggedClient
+
+
+
+
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

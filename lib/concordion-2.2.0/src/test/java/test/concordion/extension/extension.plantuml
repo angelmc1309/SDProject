@@ -1,0 +1,321 @@
+@startuml
+
+title __EXTENSION's Class Diagram__\n
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.AssertLogger {
+            - stream : PrintStream
+            + failureReported()
+            + setStream()
+            + successReported()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.CSSEmbeddedExtension {
+            + addTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.CSSLinkedExtension {
+            + addTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.CommandExtension {
+            - stream : PrintStream
+            + addTo()
+            + withStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ConcordionBuildLogger {
+            - stream : PrintStream
+            + concordionBuilt()
+            + setStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.DocumentParsingLogger {
+            - stream : PrintStream
+            + beforeParsing()
+            + setStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.DynamicResourceExtension {
+            {static} + SOURCE_PATH : String
+            - target : Target
+            + addTo()
+            + concordionBuilt()
+            - createResourceInTarget()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ExampleEventTestExtension {
+            - log : List<String>
+            - name : String
+            + addTo()
+            + afterExample()
+            + afterOuterExample()
+            + afterProcessingSpecification()
+            + beforeExample()
+            + beforeOuterExample()
+            + beforeProcessingSpecification()
+            + withLog()
+            - log()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ExampleLogger {
+            - stream : PrintStream
+            + afterExample()
+            + beforeExample()
+            + setStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ExampleProcessingExtension {
+            - assertLogger : AssertLogger
+            - concordionBuildLogger : ConcordionBuildLogger
+            - documentParsingLogger : DocumentParsingLogger
+            - exampleLogger : ExampleLogger
+            - specificationProcessingLogger : SpecificationProcessingLogger
+            + addTo()
+            + withStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ExampleTestExtension {
+            - stream : PrintStream
+            + addTo()
+            + afterExample()
+            + beforeExample()
+            + withStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ExecuteLogger {
+            - stream : PrintStream
+            + executeCompleted()
+            + setStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.JavaScriptEmbeddedExtension {
+            + addTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.JavaScriptLinkedExtension {
+            + addTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.LoggingExtension {
+            - assertLogger : AssertLogger
+            - executeLogger : ExecuteLogger
+            - setLogger : SetLogger
+            - verifyRowsLogger : VerifyRowsLogger
+            + addTo()
+            + withStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ProcessingExtension {
+            - assertLogger : AssertLogger
+            - concordionBuildLogger : ConcordionBuildLogger
+            - documentParsingLogger : DocumentParsingLogger
+            - specificationProcessingLogger : SpecificationProcessingLogger
+            + addTo()
+            + withStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.ResourceExtension {
+            {static} + SOURCE_PATH : String
+            + addTo()
+            - at()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.SetLogger {
+            - stream : PrintStream
+            + setCompleted()
+            + setStream()
+            - getTargetExpression()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.SpecificationProcessingLogger {
+            - stream : PrintStream
+            + afterProcessingSpecification()
+            + beforeProcessingSpecification()
+            + setStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      namespace extension {
+        class test.concordion.extension.VerifyRowsLogger {
+            - stream : PrintStream
+            + expressionEvaluated()
+            + missingRow()
+            + setStream()
+            + surplusRow()
+        }
+      }
+    }
+  }
+  
+
+  test.concordion.extension.AssertLogger .up.|> AssertEqualsListener
+  test.concordion.extension.AssertLogger .up.|> AssertFalseListener
+  test.concordion.extension.AssertLogger .up.|> AssertTrueListener
+  test.concordion.extension.CSSEmbeddedExtension .up.|> ConcordionExtension
+  test.concordion.extension.CSSLinkedExtension .up.|> ConcordionExtension
+  test.concordion.extension.CommandExtension .up.|> ConcordionExtension
+  test.concordion.extension.ConcordionBuildLogger .up.|> ConcordionBuildListener
+  test.concordion.extension.DocumentParsingLogger .up.|> DocumentParsingListener
+  test.concordion.extension.DynamicResourceExtension .up.|> ConcordionBuildListener
+  test.concordion.extension.DynamicResourceExtension .up.|> ConcordionExtension
+  test.concordion.extension.ExampleEventTestExtension .up.|> ConcordionExtension
+  test.concordion.extension.ExampleEventTestExtension .up.|> ExampleListener
+  test.concordion.extension.ExampleEventTestExtension .up.|> OuterExampleListener
+  test.concordion.extension.ExampleEventTestExtension .up.|> SpecificationProcessingListener
+  test.concordion.extension.ExampleLogger .up.|> ExampleListener
+  test.concordion.extension.ExampleProcessingExtension .up.|> ConcordionExtension
+  test.concordion.extension.ExampleTestExtension .up.|> ConcordionExtension
+  test.concordion.extension.ExampleTestExtension .up.|> ExampleListener
+  test.concordion.extension.ExecuteLogger .up.|> ExecuteListener
+  test.concordion.extension.JavaScriptEmbeddedExtension .up.|> ConcordionExtension
+  test.concordion.extension.JavaScriptLinkedExtension .up.|> ConcordionExtension
+  test.concordion.extension.LoggingExtension .up.|> ConcordionExtension
+  test.concordion.extension.ProcessingExtension .up.|> ConcordionExtension
+  test.concordion.extension.ResourceExtension .up.|> ConcordionExtension
+  test.concordion.extension.SetLogger .up.|> SetListener
+  test.concordion.extension.SpecificationProcessingLogger .up.|> SpecificationProcessingListener
+  test.concordion.extension.VerifyRowsLogger .up.|> VerifyRowsListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

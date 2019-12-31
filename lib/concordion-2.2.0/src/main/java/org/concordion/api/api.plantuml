@@ -1,0 +1,735 @@
+@startuml
+
+title __API's Class Diagram__\n
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        abstract class org.concordion.api.AbstractCommand {
+            + execute()
+            + execute()
+            + getExamples()
+            + modifyCommandCallTree()
+            + setUp()
+            + setUp()
+            + verify()
+            + verify()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        abstract class org.concordion.api.AbstractCommandDecorator {
+            - command : Command
+            + AbstractCommandDecorator()
+            + execute()
+            + modifyCommandCallTree()
+            + setUp()
+            + verify()
+            {abstract} # process()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.AfterExample {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.AfterSpecification {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.AfterSuite {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.BeforeExample {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.BeforeSpecification {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.BeforeSuite {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Command {
+            {abstract} + execute()
+            {abstract} + modifyCommandCallTree()
+            {abstract} + setUp()
+            {abstract} + verify()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.CommandCall {
+            - bypassExecution : boolean
+            - children : CommandCallList
+            - command : Command
+            - constantsForExecution : Map<String, Object>
+            - element : Element
+            - expression : String
+            - parameters : Map<String, String>
+            - resource : Resource
+            + CommandCall()
+            + appendChild()
+            + bypassExecution()
+            + execute()
+            + getChildren()
+            + getCommand()
+            + getConstantForExecution()
+            + getElement()
+            + getExpression()
+            + getParameter()
+            + getParameter()
+            + getParent()
+            + getResource()
+            + hasChildCommands()
+            + modifyTree()
+            + setBypassExecution()
+            + setConstantForExecution()
+            + setElement()
+            + setParameters()
+            + setUp()
+            + transferToParent()
+            + verify()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.CommandCallList {
+            - commandCalls : List<CommandCall>
+            + append()
+            + asCollection()
+            + execute()
+            + get()
+            + isEmpty()
+            + processSequentially()
+            + remove()
+            + setUp()
+            + size()
+            + verify()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.CommandFactory {
+            {abstract} + createCommand()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ConcordionResources {
+            {abstract} + includeDefaultStyling()
+            {abstract} + insertType()
+            {abstract} + value()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        enum InsertType {
+          EMBEDDED
+          LINKED
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ConcordionScoped {
+            {abstract} + value()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.Element {
+            {static} + XHTML_PREFIX : String
+            {static} + XHTML_URI : String
+            {static} - namespaceMappings : XPathContext
+            - xomElement : Element
+            + Element()
+            + Element()
+            + addAttribute()
+            + addStyleClass()
+            + appendChild()
+            + appendNonBreakingSpace()
+            + appendNonBreakingSpaceIfBlank()
+            + appendSister()
+            + appendText()
+            + deepClone()
+            + equals()
+            + getAttributeValue()
+            + getAttributeValue()
+            + getChildElements()
+            + getChildElements()
+            + getDescendantElements()
+            + getElementById()
+            + getFirstChildElement()
+            + getFirstDescendantNamed()
+            + getLocalName()
+            + getParentElement()
+            + getRootElement()
+            + getText()
+            + hasChildren()
+            + hashCode()
+            + isNamed()
+            + moveAttributesTo()
+            + moveChildrenTo()
+            + prependChild()
+            + prependText()
+            + removeAttribute()
+            + removeAttribute()
+            + removeChild()
+            + setId()
+            + toXML()
+            - getChildNodes()
+            - isBlank()
+            - wrapXomElements()
+            - xpathForElementName()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Evaluator {
+            {abstract} + evaluate()
+            {abstract} + getVariable()
+            {abstract} + setVariable()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.EvaluatorFactory {
+            {abstract} + createEvaluator()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.ExampleCommandCall {
+            - commandCall : CommandCall
+            - exampleName : String
+            + ExampleCommandCall()
+            + getCommandCall()
+            + getExampleName()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ExampleDefinition {
+            {abstract} + getAttributeValue()
+            {abstract} + getAttributeValue()
+            {abstract} + getName()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ExampleName {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ExpectedToFail {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ExpectedToPass {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.FailFast {
+            {abstract} + onExceptionType()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Fixture {
+            {abstract} + afterExample()
+            {abstract} + afterProcessExample()
+            {abstract} + afterSpecification()
+            {abstract} + afterSuite()
+            {abstract} + beforeExample()
+            {abstract} + beforeProcessExample()
+            {abstract} + beforeSpecification()
+            {abstract} + beforeSuite()
+            {abstract} + getFixtureObject()
+            {abstract} + getFixtureType()
+            {abstract} + setupForRun()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.FixtureDeclarations {
+            {abstract} + declaresFailFast()
+            {abstract} + declaresFullOGNL()
+            {abstract} + declaresResources()
+            {abstract} + getDeclaredConcordionOptionsParentFirst()
+            {abstract} + getDeclaredFailFastExceptions()
+            {abstract} + getDeclaredImplementationStatus()
+            {abstract} + getDescription()
+            {abstract} + getFixtureClass()
+            {abstract} + getFixturePathWithoutSuffix()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.FullOGNL {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.IgnoredExample {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        enum ImplementationStatus {
+          EXPECTED_TO_FAIL
+          EXPECTED_TO_PASS
+          IGNORED
+          UNIMPLEMENTED
+          annotation
+          tag
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ImplementationStatusModifier {
+            {abstract} + getStatusForExample()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.MultiValueResult {
+            {static} - serialVersionUID : long
+            {static} + multiValueResult()
+            + with()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        class org.concordion.api.Resource {
+            - isPackage : boolean
+            - name : String
+            - parts : String[]
+            - path : String
+            + Resource()
+            + equals()
+            + getName()
+            + getParent()
+            + getPath()
+            + getRelativePath()
+            + getRelativeResource()
+            + hashCode()
+            + toString()
+            - endsWithSlash()
+            - getPackage()
+            - getPathPieces()
+            - isPackage()
+            - removeAnyLeadingDotSlashFrom()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        enum Result {
+          EXCEPTION
+          FAILURE
+          IGNORED
+          SUCCESS
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ResultRecorder {
+            {abstract} + getImplementationStatus()
+            {abstract} + record()
+            {abstract} + record()
+            {abstract} + recordFailFastException()
+            {abstract} + setForExample()
+            {abstract} + setImplementationStatus()
+            {abstract} + setSpecificationDescription()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.ResultSummary {
+            {abstract} + assertIsSatisfied()
+            {abstract} + getExceptionCount()
+            {abstract} + getFailureCount()
+            {abstract} + getIgnoredCount()
+            {abstract} + getImplementationStatus()
+            {abstract} + getSpecificationDescription()
+            {abstract} + getSuccessCount()
+            {abstract} + hasExceptions()
+            {abstract} + isForExample()
+            {abstract} + print()
+            {abstract} + printCountsToString()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.RunStrategy {
+            {abstract} + call()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Runner {
+            {abstract} + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.RunnerFactory {
+            {abstract} + createRunner()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        enum Scope {
+          EXAMPLE
+          SPECIFICATION
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        abstract class org.concordion.api.ScopedObjectHolder {
+            + get()
+            + isCreated()
+            {abstract} # create()
+            # destroy()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Source {
+            {abstract} + canFind()
+            {abstract} + createInputStream()
+            {abstract} + readAsString()
+            {abstract} + readResourceAsString()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        enum SourceType {
+          RESOURCE
+          SPECIFICATION
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Specification {
+            {abstract} + getDescription()
+            {abstract} + process()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.SpecificationByExample {
+            {abstract} + finish()
+            {abstract} + getExampleNames()
+            {abstract} + hasExampleCommandNodes()
+            {abstract} + processExample()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.SpecificationConverter {
+            {abstract} + convert()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.SpecificationLocator {
+            {abstract} + locateSpecification()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.SpecificationReader {
+            {abstract} + canFindSpecification()
+            {abstract} + readSpecification()
+            {abstract} + setCopySourceHtmlTarget()
+            {abstract} + setSpecificationConverter()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Target {
+            {abstract} + copyTo()
+            {abstract} + delete()
+            {abstract} + exists()
+            {abstract} + getOutputStream()
+            {abstract} + resolvedPathFor()
+            {abstract} + write()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace rg.concordion {
+      namespace api {
+        interface org.concordion.api.Unimplemented {
+        }
+      }
+    }
+  }
+  
+
+  org.concordion.api.AbstractCommand .up.|> Command
+  org.concordion.api.AbstractCommandDecorator .up.|> Command
+  org.concordion.api.CommandCall o-- org.concordion.api.CommandCall : parent
+  org.concordion.api.ConcordionResources +-down- org.concordion.api.ConcordionResources.InsertType
+  org.concordion.api.ScopedObjectHolder o-- T : value
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

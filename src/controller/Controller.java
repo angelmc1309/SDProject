@@ -356,7 +356,7 @@ public class Controller {
             returnVal[j] = series.get(index).getTitol();
         }
         return returnVal;*/
-        
+
         return new String[0];
     }
 

@@ -1,0 +1,245 @@
+@startuml
+
+title __CONCORDION's Class Diagram__\n
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.DummyFixture {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.EventRecorder {
+          - events : List<Object>
+          + failureReported()
+          + getLast()
+          + successReported()
+          + throwableCaught()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.FileOutputStreamer {
+          {static} - PROPERTY_OUTPUT_DIR : String
+          - baseOutputDir : File
+          - resourcesOutput : List<String>
+          + FileOutputStreamer()
+          + getBaseOutputDir()
+          + getFile()
+          + getOutputStream()
+          + getResourcesOutput()
+          - createOutputStream()
+          - mkdirs()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.FilterSource {
+          - prefix : String
+          - source : Source
+          + FilterSource()
+          + canFind()
+          + createInputStream()
+          + readAsString()
+          + readResourceAsString()
+          - getResourceAsStream()
+          - readAsString()
+          - readAsString()
+          - readResourceAsString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.JavaSourceCompiler {
+          {static} - CLASS_NAME_PATTERN : Pattern
+          {static} - PACKAGE_NAME_PATTERN : Pattern
+          - compiler : JavaCompiler
+          + compile()
+          + compile()
+          + compile()
+          + compileWithParent()
+          - getClassName()
+          - getPackageName()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      interface test.concordion.OutputStreamer {
+          {abstract} + getOutputStream()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.ProcessingResult {
+          - documentXML : String
+          - eventRecorder : EventRecorder
+          - resultSummary : ResultSummary
+          + ProcessingResult()
+          + getElementXML()
+          + getExceptionCount()
+          + getExceptionMessage()
+          + getFailureCount()
+          + getFooterText()
+          + getIgnoredCount()
+          + getLastAssertFailureEvent()
+          + getLinkedCSS()
+          + getLinkedJavaScript()
+          + getOutputFragmentXML()
+          + getRootElement()
+          + getStackTraceMessage()
+          + getSuccessCount()
+          + getXOMDocument()
+          + hasCSSDeclaration()
+          + hasEmbeddedCSS()
+          + hasEmbeddedJavaScript()
+          + hasFailures()
+          + hasJavaScriptDeclaration()
+          + hasJavaScriptFunction()
+          + hasLinkedCSS()
+          + hasLinkedJavaScript()
+          + isSuccess()
+          + successOrFailureInWords()
+          + toXML()
+          - combine()
+          - getHeadElement()
+          - getOutputFragment()
+          - readFile()
+          - textOfElementWithClass()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.RunCommandSimulator {
+          + createMap()
+          + simulate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.StubEvaluator {
+          - evaluationResult : Object
+          + createEvaluator()
+          + evaluate()
+          + getVariable()
+          + setVariable()
+          + withStubbedResult()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.StubSource {
+          - resources : Map<Resource, String>
+          + addResource()
+          + addResource()
+          + canFind()
+          + createInputStream()
+          + readAsString()
+          + readResourceAsString()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.StubTarget {
+          - copiedResources : List<Resource>
+          - outputStreamer : OutputStreamer
+          - writtenStrings : LinkedHashMap<Resource, String>
+          + copyTo()
+          + delete()
+          + exists()
+          + getCopiedResources()
+          + getOutputStream()
+          + getOutputStreamer()
+          + getWrittenString()
+          + hasCopiedResource()
+          + resolvedPathFor()
+          + setOutputStreamer()
+          + write()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace est.concordion {
+      class test.concordion.TestRig {
+          - evaluatorFactory : EvaluatorFactory
+          - extension : ConcordionExtension
+          - fixture : Fixture
+          - fixtureExtensionLoader : FixtureExtensionLoader
+          - namespaceDeclaration : String
+          - source : Source
+          - stubSource : StubSource
+          - stubTarget : StubTarget
+          + getCopiedResources()
+          + hasCopiedResource()
+          + process()
+          + process()
+          + process()
+          + processFragment()
+          + processFragment()
+          + processFragment()
+          + withExtension()
+          + withFixture()
+          + withNamespaceDeclaration()
+          + withOutputStreamer()
+          + withResource()
+          + withSourceFilter()
+          + withStubbedEvaluationResult()
+          - process()
+          - wrapFragment()
+          - wrapFragment()
+          - wrapWithNamespaceDeclaration()
+      }
+    }
+  }
+  
+
+  test.concordion.EventRecorder .up.|> AssertEqualsListener
+  test.concordion.EventRecorder .up.|> ThrowableCaughtListener
+  test.concordion.FileOutputStreamer .up.|> OutputStreamer
+  test.concordion.FilterSource .up.|> Source
+  test.concordion.StubEvaluator .up.|> Evaluator
+  test.concordion.StubEvaluator .up.|> EvaluatorFactory
+  test.concordion.StubSource .up.|> Source
+  test.concordion.StubTarget .up.|> Target
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

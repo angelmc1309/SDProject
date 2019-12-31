@@ -1,0 +1,205 @@
+@startuml
+
+title __EXTENSION's Class Diagram__\n
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        abstract class spec.concordion.common.extension.AbstractExtensionTestCase {
+            - eventList : List<String>
+            - extension : ConcordionExtension
+            - helper : ScopedObjectHolder<ExtensionTestHelper>
+            - processingResult : ProcessingResult
+            - testRig : TestRig
+            + getEventLog()
+            + getLogStream()
+            + isAvailable()
+            + process()
+            + processAnything()
+            # configureTestRig()
+            # getProcessingResult()
+            # setExtension()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.CSSExtensionTest {
+            {static} + SOURCE_PATH : String
+            {static} + TEST_CSS : String
+            + addEmbeddedCSSExtension()
+            + addLinkedCSSExtension()
+            + hasCSSDeclaration()
+            + hasEmbeddedTestCSS()
+            # configureTestRig()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.CustomCommandTest {
+            + addCommandExtension()
+            + getOutput()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.ExtensionConfigurationTest {
+            {static} - CLASS_NAME_PATTERN : Pattern
+            - compiler : JavaSourceCompiler
+            + clearConcordionExtensionsSystemProperty()
+            + process()
+            + process()
+            + process()
+            + setSystemProperty()
+            - compile()
+            - getClassName()
+            - process()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.ExtensionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.ExtensionTestHelper {
+            - baos : ByteArrayOutputStream
+            - logStream : PrintStream
+            + ExtensionTestHelper()
+            + getBaos()
+            + getLogStream()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.FileSuffixExtensionsTest {
+            + hasBeenProcessed()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.FileTargetWithSuffix {
+            {static} - PROPERTY_OUTPUT_DIR : String
+            - suffix : String
+            - target : FileTarget
+            + FileTargetWithSuffix()
+            + copyTo()
+            + delete()
+            + exists()
+            + getOutputStream()
+            + resolvedPathFor()
+            + write()
+            - getBaseOutputDir()
+            - rename()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.ImplementationStatusModifierTest {
+            - afterExampleCapturedNames : List<String>
+            - beforeExampleCapturedNames : List<String>
+            + addExtension()
+            + getAfterExampleCapturedNames()
+            + getBeforeExampleCapturedNames()
+            + getProcessingResult()
+            + saveNameAfterExample()
+            + saveNameBeforeExample()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.JavaScriptExtensionTest {
+            {static} + SOURCE_PATH : String
+            {static} + TEST_JS : String
+            + addEmbeddedJavaScriptExtension()
+            + addLinkedJavaScriptExtension()
+            + hasEmbeddedTestJavaScript()
+            + hasJavaScriptDeclaration()
+            # configureTestRig()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.ResourceExtensionTest {
+            + addDynamicResourceExtension()
+            + addResourceExtension()
+            # configureTestRig()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace pec.concordion {
+      namespace common.extension {
+        class spec.concordion.common.extension.SxhtmlExtension {
+            + addTo()
+        }
+      }
+    }
+  }
+  
+
+  spec.concordion.common.extension.FileTargetWithSuffix .up.|> Target
+  spec.concordion.common.extension.SxhtmlExtension .up.|> ConcordionExtension
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
