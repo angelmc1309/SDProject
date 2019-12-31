@@ -103,7 +103,8 @@ class FormReproduccio extends JDialog {
         int tempsVisualitzacio = (progressBar.getValue()*duracioVisualitzacio)/100;
         //TODO Cal cridar a Controller per guardar l'estat de la visualització
         int tempsRestant = duracioVisualitzacio-tempsVisualitzacio;
-        String estat = Controller.getInstance().endVisualitzacio("lmento","lmento",serie,numTemporada,episodi,tempsRestant);
+        String estat = Controller.getInstance().endVisualitzacio(Controller.getInstance().getLoggedClient(),
+                Controller.getInstance().getLoggedUser(),serie,numTemporada,episodi,tempsRestant);
         JOptionPane.showMessageDialog(jPanel, estat);
         dispose();
     }

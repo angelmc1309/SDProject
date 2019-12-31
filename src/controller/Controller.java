@@ -7,10 +7,7 @@ import resources.service.FactoryMOCK;
 import view.Observer;
 import view.UBFLIX;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Controller {
 
@@ -359,6 +356,9 @@ public class Controller {
             returnVal[j] = series.get(index).getTitol();
         }
         return returnVal;*/
+        
         return new String[0];
     }
+
+
 }

@@ -102,6 +102,8 @@ class FormEpisodi extends JDialog{
         fr.setVisible(true);
         valorarButton.setEnabled(estaValorat(idSerie, numTemporada, titol));
         //TODO Cal fer la crida a Controller per indicar la duracio de la visualitzacio
+        Controller.getInstance().startVisualitzacio(Controller.getInstance().getLoggedClient(),
+                Controller.getInstance().getLoggedUser(),idSerie,numTemporada,titol);
     }
 
     /**
@@ -113,6 +115,7 @@ class FormEpisodi extends JDialog{
      */
     private boolean estaValorat(String idSerie, int numTemporada, String titol) {
         //TODO Cal fer la logica de valoracio cridant a Controller
+
         return true;
     }
 

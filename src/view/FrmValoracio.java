@@ -147,6 +147,9 @@ class FrmValoracio extends JDialog {
      */
     private void onValorar(String idSerie, int numTemporada, String episodi) {
         //TODO Cal cridar a Controller per valorar l'episodi
+        Controller.getInstance().valorarEpisodiAmbEstrella(Controller.getInstance().getLoggedClient(),
+                Controller.getInstance().getLoggedUser(),idSerie,numTemporada,episodi,
+                barraEmocio.getValue());
         String estat = "Episodi valorat";
         JOptionPane.showMessageDialog(contentPane, estat);
         dispose();
