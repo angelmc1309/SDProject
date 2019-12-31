@@ -1,9 +1,7 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class Temporada {
     private HashMap<String,Episodi> episodis;
@@ -46,4 +44,7 @@ public class Temporada {
     public Collection<Episodi> getAllEpisodis() {
         return episodis.values();
     }
+
+
+
 }

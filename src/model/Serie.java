@@ -3,13 +3,13 @@ package model;
 import model.DetallsSerie;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 
 public class Serie {
     private String idSerie;
-    private int ntemporades;
     private HashMap<Integer, Temporada> temporades;
     private DetallsSerie detallsSerie;
 
@@ -85,13 +85,26 @@ public class Serie {
     }
 
     public String[] getTemporades() {
-        String[] returnValue = new String[ntemporades];
-        for(int i = 0; i < ntemporades;i++){
+        String[] returnValue = new String[temporades.size()];
+        for(int i = 0; i < temporades.size();i++){
             returnValue[i] = (i+1)+"";
         }
         return returnValue;
 
     }
+
+    public String[] getEpisodisTemporada(String temporada) {
+        Collection<Episodi> c = temporades.get(Integer.parseInt(temporada)).getAllEpisodis();
+        String[] s = new String[c.size()];
+        int i = 0;
+        for(Episodi e : c){
+            s[i] = (e.getNom());
+            i++;
+        }
+        return s;
+    }
+
+
 }
 
 

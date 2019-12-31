@@ -1,7 +1,6 @@
 package model;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-import sun.security.jca.GetInstance;
+
 
 import java.util.List;
 
@@ -17,6 +16,13 @@ public class BibliotecaSeries {
 
         for (Serie serie: biblioteca) {
             if (serie.getIdSerie().equals(idSerie)) return serie;
+        }
+        return null;
+    }
+    public Serie findByTitle(String idSerie) {
+
+        for (Serie serie: biblioteca) {
+            if (serie.getTitol().equals(idSerie)) return serie;
         }
         return null;
     }
@@ -61,12 +67,21 @@ public class BibliotecaSeries {
     public String llistarCatalegSeries(){
         String auxiliar = "";
         for (Serie serie: biblioteca){
-            auxiliar += serie.getIdSerie() + "\n";
+            auxiliar += serie.getTitol() + "\n";
         }
         return auxiliar;
     }
 
     public String[] getTemporadaSerie(String serie) {
-        return find(serie).getTemporades();
+        return findByTitle(serie).getTemporades();
+    }
+
+    public String[] getEpisodiTemporada(String serie, String temporada) {
+        return findByTitle(serie).getEpisodisTemporada(temporada);
+    }
+
+
+    public String getIdSerie(String serie) {
+        return findByTitle(serie).getIdSerie();
     }
 }

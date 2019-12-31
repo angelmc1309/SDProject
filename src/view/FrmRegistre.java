@@ -35,7 +35,7 @@ class FrmRegistre extends JDialog {
     private JTextField textUsername;
     private JPasswordField textPassword1;
     private JPasswordField textPassword2;
-    private Controller controlador;
+
 
     /**
      * Constructor de la finestra del Registre on es fixa l'aspecte d'aquesta i s'inicialitzen els components
@@ -55,7 +55,7 @@ class FrmRegistre extends JDialog {
      * Mètode que inicialitza tots els components de la GUI del Registre d'usuaris i s'afegeixen els listeners dels events per quan es fa la acció sobre els components.
      */
     private void initComponents() {
-        controlador = new Controller();
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -93,7 +93,7 @@ class FrmRegistre extends JDialog {
         // add your code here
         try {
             String contrassenya1 = new String(textPassword1.getPassword());
-            String nomReal= textNomReal.getName();
+            String nomReal= textNomReal.getText();
             String dni = textDNI.getText();
             String adreca = textAdreca.getText();
             String username = textUsername.getText();
@@ -104,7 +104,8 @@ class FrmRegistre extends JDialog {
                 textPassword2.setText("");
             }
             else{
-                String info=controlador.addClient(username,contrassenya1,adreca,nomReal,dni);
+                String info=Controller.getInstance().addClient(username,contrassenya1,adreca,nomReal,dni);
+                Controller.getInstance().addUsuari(username,"DEFAULT");
                 JOptionPane.showMessageDialog(this, info, "INFORMACIÓ REGISTRE", JOptionPane.INFORMATION_MESSAGE);
                 if (info.equals("Client afegit")) {
                     this.dispose();

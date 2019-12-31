@@ -50,4 +50,8 @@ public class Visualitzacio {
     public String getUser() {
         return usuariId;
     }
+
+    public String getSerie() {
+        return getIdentificador().split("@")[2];
+    }
 }

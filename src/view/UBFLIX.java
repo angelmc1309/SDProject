@@ -12,13 +12,17 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  * GUI bàsica de l'app UBFLIX on es mostraran les diferents llistes corresponent a cada client que hagi realitzat el Log In.
  * Aquesta classe hereta de JFrame i és la vista principal de l'aplicació.
  */
-public class UBFLIX extends JFrame{
+public class UBFLIX extends JFrame implements Observer {
 
     private JPanel jPanel;
     private JTabbedPane llistes;
@@ -42,13 +46,16 @@ public class UBFLIX extends JFrame{
     private HashMap<String, JPopupMenu> popupMenuTemporades;
     private DefaultTableModel tableModelVis;
     private DefaultTableModel tableModelVal;
-
+    private String actualUser;
+    private String actualClient;
 
     /**
      * Constructor de la classe UBFLIX que crida initComponents()
      */
     public UBFLIX(){
         super("UBFLIX");
+        Controller.getInstance().attachObserverLoggedUser(this);
+        Controller.getInstance().attachObserverLoggedClient(this);
         initComponents();
         this.setVisible(true);
 
@@ -79,13 +86,20 @@ public class UBFLIX extends JFrame{
         btnAfegirMyList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String idSerie = Controller.getInstance().getIdSerie((String)listAll.getSelectedValue()) ;
+                Controller.getInstance().afegirSerieMyList(actualClient,actualUser,idSerie);
+                refreshMyList();
                 JOptionPane.showMessageDialog(jPanel, "Serie afegida a My List!");
+
             }
         });
         btnCrearUsuari.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 userActionPerformed();
+
+                refreshUsers();
             }
         });
         listAll.addListSelectionListener(new ListSelectionListener() {
@@ -112,10 +126,18 @@ public class UBFLIX extends JFrame{
                 mostrarPopupMenuTemporades(listContinueWatching, fieldNotStarted);
             }
         });
+        comboBoxValorar.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    Controller.getInstance().logUser((String) comboBoxValorar.getSelectedItem());
+                    refreshLlistes();
+
+                }
+            }
+        });
         popupMenuTemporades = new HashMap<>();
-        comboBoxValorar.addItem("Usuari 1");
-        comboBoxValorar.addItem("Usuari 2");
-        comboBoxValorar.addItem("Usuari 3");
+
         inicialitzarLlistaTopVisualitzacions();
         inicialitzarLlistaTopValoracions();
     }
@@ -198,6 +220,7 @@ public class UBFLIX extends JFrame{
         dialog.setVisible(true);
         jPanel.setVisible(true);
         refreshLlistes();
+        refreshUsers();
     }
 
     /**
@@ -255,14 +278,14 @@ public class UBFLIX extends JFrame{
      */
     private void refreshEpisodis(String serie, String temporada, JMenu jm) {
         //TODO Cal cridar a Controller per refescar els episodis
-        String[] episodis = {"episodi 1","episodi 2", "episodi 3"};
+        String[] episodis = Controller.getInstance().getEpisodisTemporada(serie,temporada);
         for (String episodi: episodis) {
-            String idSerie = "Id Serie";
-            int numTemporada = Integer.parseInt(temporada.substring(10));
-            int duracio = 30;
+            String idSerie = Controller.getInstance().getIdSerie(serie);
+            int numTemporada = Integer.parseInt(temporada);
+            int duracio = Controller.getInstance().getDuracioEpisodi(idSerie,temporada,episodi);
             int duracioVisualitzada = 0;
             //TODO Cal cridar a Controller per obtenir les descripcions
-            String descripcio = "Descripcio de l'episodi";
+            String descripcio = Controller.getInstance().mostrarDetallsSerie(idSerie);
             JMenuItem ep = new JMenuItem(episodi);
             ep.addActionListener(new ActionListener() {
                 @Override
@@ -290,7 +313,12 @@ public class UBFLIX extends JFrame{
      */
     private void refreshMyList() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = null;
+        String s = Controller.getInstance().veureMyList(actualClient,actualUser);
+        if(s.equals("")){
+            listMyList.setListData(new String[0]);
+            return;
+        }
+        String[] series = s.split("\n");
         listMyList.setListData(series);
     }
 
@@ -299,7 +327,7 @@ public class UBFLIX extends JFrame{
      */
     private void refreshWatched() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1", "serie 2", "serie 3"};
+        String[] series = Controller.getInstance().llistarWatchedList(actualClient,actualUser).split("\n");
         listWatched.setListData(series);
     }
 
@@ -308,7 +336,7 @@ public class UBFLIX extends JFrame{
      */
     private void refreshContinueWatching() {
         //TODO Cal cridar a Controller per refescar les series
-        String[] series = {"serie 1", "serie 2", "serie 3"};
+        String[] series = Controller.getInstance().llistarContinueWatching(actualClient,actualUser).split("\n");
         listContinueWatching.setListData(series);
     }
 
@@ -321,7 +349,7 @@ public class UBFLIX extends JFrame{
         for (int i = numRows - 1; i >= 0; i--)
             tableModelVal.removeRow(i);
         //TODO Cal cridar a Controller per refescar les series
-        String [] topTenVal = {"serie 1", "serie 2", "serie 3", "serie 4", "serie 5", "serie 6", "serie 7", "serie 8", "serie 9", "serie 10"};
+        String [] topTenVal = Controller.getInstance().topValoracions();
         for (String serie: topTenVal) {
             tableModelVal.addRow(new String[]{serie, String.format("%.2f", 5.7)});
         }
@@ -336,7 +364,7 @@ public class UBFLIX extends JFrame{
         for (int i = numRows - 1; i >= 0; i--)
             tableModelVis.removeRow(i);
         //TODO Cal cridar a Controller per refescar les series
-        String [] topTenVisualitzacions = {"serie 1", "serie 2", "serie 3", "serie 4", "serie 5", "serie 6", "serie 7", "serie 8", "serie 9", "serie 10"};
+        String [] topTenVisualitzacions = Controller.getInstance().topVisualitzacions();
         for (String serie: topTenVisualitzacions) {
             tableModelVis.addRow(new Object[]{serie, 10});
         }
@@ -357,4 +385,18 @@ public class UBFLIX extends JFrame{
         dialog.setVisible(true);
     }
 
+    public void refreshUsers(){
+        ArrayList<String> s =  Controller.getInstance().getAllUsers(actualClient);
+        comboBoxValorar.removeAllItems();
+        int i = 0;
+        for(String a : s){
+            comboBoxValorar.addItem(s.get(i));
+            i++;
+        }
+    }
+    @Override
+    public void _update() {
+        actualClient = Controller.getInstance().getLoggedClient();
+        actualUser = Controller.getInstance().getLoggedUser();
+    }
 }

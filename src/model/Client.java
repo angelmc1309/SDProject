@@ -2,6 +2,7 @@ package model;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -111,5 +112,13 @@ public class Client {
             return "Usuari Unknown";
         }
         return findUser(username).setName(newUsername);
+    }
+
+    public String getFirstUser() {
+        return (String) usuaris.keySet().toArray()[0];
+    }
+
+    public ArrayList< String> getAllUsers() {
+        return new ArrayList<String> (usuaris.keySet());
     }
 }

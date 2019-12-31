@@ -2,7 +2,7 @@ package model;
 
 public class ValoracionsEstrelles extends Valoracions {
     private static final int  MIN_STARS = 1,MAX_STARS = 5;
-    private int value;
+
 
     public ValoracionsEstrelles(String usuariId, String episodi){
         super(usuariId,episodi);

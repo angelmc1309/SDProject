@@ -3,6 +3,7 @@ package model;
 public abstract class Valoracions {
     private String usuariId;
     private String episodi;
+    protected int value;
     public Valoracions(String usuariId, String episodi){
         this.usuariId = usuariId;
         this.episodi = episodi;
@@ -38,4 +39,9 @@ public abstract class Valoracions {
     public abstract boolean setValue(int value);
 
 
+    public String getSerie(){return getIdentificador().split("@")[2];}
+
+    public  int getValue(){
+        return value;
+    }
 }

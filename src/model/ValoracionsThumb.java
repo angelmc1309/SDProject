@@ -1,7 +1,7 @@
 package model;
 
 public class ValoracionsThumb extends Valoracions {
-    private int value;
+
     public ValoracionsThumb(String usuariId, String episodi){
         super(usuariId,episodi);
     }

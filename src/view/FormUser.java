@@ -22,7 +22,7 @@ public class FormUser extends JDialog{
     //private JTextField textFieldClient;
     private JLabel usernameLabel;
     //private JLabel clientLabel;
-    private Controller controlador;
+
 
 
     public FormUser() {
@@ -35,7 +35,7 @@ public class FormUser extends JDialog{
     }
 
     private void initComponents() {
-        controlador = new Controller();
+
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -71,13 +71,14 @@ public class FormUser extends JDialog{
     private void onRegister() {
         //TODO Cal cridar a Controller per fer el registre de l'usuari
         //String client = textFieldClient.getName();
-        String client = "lmento";
-        String username = textFieldUsername.getName();
-        if (controlador.addUsuari(client,username)){
+        String client = Controller.getInstance().getLoggedClient();
+        String username = textFieldUsername.getText();
+        if (Controller.getInstance().addUsuari(client,username)){
+
             JOptionPane.showMessageDialog(this, "Usuari registrat correctament");
             dispose();
         } else{
-            if (controlador.tooMuchUsers(client)){
+            if (Controller.getInstance().tooMuchUsers(client)){
                 JOptionPane.showMessageDialog(this,"S'ha arribat al maxim nombre d'usuaris");
                 dispose();
             }else{

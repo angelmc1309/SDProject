@@ -4,8 +4,11 @@ import model.*;
 import resources.service.AbstractFactoryData;
 import resources.service.DataService;
 import resources.service.FactoryMOCK;
+import view.Observer;
+import view.UBFLIX;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +47,18 @@ public class Controller {
 
     public boolean validateClient(String username, String password) {
         return dataService.getClientByUsuariAndPassword(username, password) != null;
+    }
+    public void logClient(String clientName){
+        LoggedClient.getInstance().setClient(clientName);
+    }
+    public void logUser(String username) {
+        LoggedUser.getInstance().setUser(username);
+    }
+    public String getLoggedUser(){
+        return LoggedUser.getInstance().getUser();
+    }
+    public String getLoggedClient(){
+        return LoggedClient.getInstance().getClient();
     }
 
     public boolean iniCarteraClients() {
@@ -188,7 +203,15 @@ public class Controller {
     }
 
     public String veureMyList(String idClient, String idUsuari) {
-        return carteraClients.veureMyList(idClient,idUsuari);
+        String [] s = carteraClients.veureMyList(idClient,idUsuari).split("\n");
+
+        String returnVal = "";
+        for(String a :s ){
+            if(a.equals("")){break;}
+            returnVal += bibliotecaSeries.find(a).getTitol()+"\n";
+
+        }
+        return returnVal;
     }
 
     public String startVisualitzacio(String client, String usuari, String serie, int temporada, String episodi) {
@@ -211,22 +234,21 @@ public class Controller {
         for(Serie s : l){
             List<Episodi> episodis = bibliotecaSeries.getAllEpisodis(s);
             if(carteraClients.allEpisodisWatched(client,usuari,episodis)){
-                series += s.getTitol();
+                series += s.getTitol()+"\n";
             }
         }
-        if(series.isEmpty()){series = "Empty List";}
         return series;
     }
     public String llistarContinueWatching(String client, String usuari) {
         String series = "";
         List<Serie> l = bibliotecaSeries.getAllSeries();
-        for(Serie s : l){
+        for(Serie s : l) {
             List<Episodi> episodis = bibliotecaSeries.getAllEpisodis(s);
-            if(carteraClients.isSerieStarted(client,usuari,episodis) &&
-                    !(carteraClients.allEpisodisWatched(client,usuari,episodis))){
-                series += s.getTitol();
+            if (carteraClients.isSerieStarted(client, usuari, episodis) &&
+                    !(carteraClients.allEpisodisWatched(client, usuari, episodis))) {
+                series += s.getTitol() + "\n";
             }
-        }if(series.isEmpty()){series = "Empty List";}
+        }
         return series;
 
     }
@@ -241,5 +263,102 @@ public class Controller {
 
     public String[] getTemporadaSerie(String serie) {
         return bibliotecaSeries.getTemporadaSerie(serie);
+    }
+
+    public String[] getEpisodisTemporada(String serie, String temporada) {
+        return bibliotecaSeries.getEpisodiTemporada(serie,temporada);
+    }
+
+
+    public String getIdSerie(String serie) {
+        return bibliotecaSeries.getIdSerie(serie);
+    }
+
+    public int getDuracioEpisodi(String idSerie, String temporada, String episodi) {
+        return bibliotecaSeries.getDuradaEpisodi(idSerie,Integer.parseInt(temporada),episodi);
+    }
+
+    public void attachObserverLoggedUser(Observer o) {
+        LoggedUser.getInstance().attach(o);
+
+    }
+
+    public void attachObserverLoggedClient(Observer o) {
+        LoggedClient.getInstance().attach(o);
+    }
+
+
+    public String getUser(String username) {
+        return carteraClients.find(username).getFirstUser();
+    }
+
+    public ArrayList<String> getAllUsers(String actualClient) {
+        return carteraClients.getAllUSers(actualClient);
+    }
+
+    public String[] topVisualitzacions(){
+        /*
+        List<Visualitzacio> visualitzacions= dataService.getAllVisualitzacions();
+        List<Serie> series = dataService.getAllSeries();
+        int size ;
+        if(series.size() < 10){size = series.size();}
+        else{size = 10;}
+        Integer[] punts = new Integer[series.size()];
+        String[] returnVal = new String[size];
+        for(Visualitzacio v : visualitzacions){
+            if(v.isWatched()){
+                String idSerie = v.getSerie();
+                for(Serie s : series){
+                    if(s.getIdSerie().equals(idSerie)){
+                        punts[series.indexOf(s)] =new Integer(1+punts[series.indexOf(s)].intValue()) ;
+
+                    }
+                }
+            }
+        }
+        for(int j = 0;j<size;j++) {
+            int max = 0;
+            for (int i = 0; i < punts.length; i++) {
+                if (punts[i] > max) {
+                    max = punts[i];
+                }
+            }
+            int index = java.util.Arrays.asList(punts).indexOf(new Integer(max));
+            returnVal[j] = series.get(index).getTitol();
+        }
+        return returnVal;*/
+        return new String[0];
+
+    }
+    public String[] topValoracions(){
+        /*
+        List<Valoracions> valoracions= dataService.getAllValoracions();
+        List<Serie> series = dataService.getAllSeries();
+        int size ;
+        if(series.size() < 10){size = series.size();}
+        else{size = 10;}
+        Integer[] punts = new Integer[series.size()];
+        String[] returnVal = new String[size];
+        for(Valoracions v : valoracions){
+
+            String idSerie = v.getSerie();
+            for(Serie s : series){
+                if(s.getIdSerie().equals(idSerie)){
+                    punts[series.indexOf(s)] =new Integer(v.getValue()+punts[series.indexOf(s)].intValue()) ;
+                }
+            }
+        }
+        for(int j = 0;j<size;j++) {
+            int max = 0;
+            for (int i = 0; i < punts.length; i++) {
+                if (punts[i] > max) {
+                    max = punts[i];
+                }
+            }
+            int index = java.util.Arrays.asList(punts).indexOf(new Integer(max));
+            returnVal[j] = series.get(index).getTitol();
+        }
+        return returnVal;*/
+        return new String[0];
     }
 }

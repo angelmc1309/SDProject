@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarteraClients {
@@ -115,5 +116,9 @@ public class CarteraClients {
     public String modificaPerfil(String clientName, String username, String newUsername) {
         return find(clientName).modificaPerfil(username,newUsername);
 
+    }
+
+    public ArrayList<String> getAllUSers(String actualClient) {
+        return find(actualClient).getAllUsers();
     }
 }

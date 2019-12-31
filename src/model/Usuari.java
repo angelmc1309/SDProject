@@ -69,16 +69,14 @@ public class Usuari {
 
 
     public String veureMyList() {
-        String list = "Usuari: " + getName();
-        if (myList.isEmpty()){
-            list = "Llista buida";
-        }
-        else{
-            list += "\nSeries:\n";
+        String list = "";
+
+
+
             for (String series : myList.getFavorits()){
                 list += series + "\n";
             }
-        }
+
         return list;
     }
 

@@ -96,6 +96,8 @@ class FrmLogIn extends JDialog {
             if (Controller.getInstance().validateClient(username,password)){
                 String info = "Log-in correcte";
                 JOptionPane.showMessageDialog(this, info, "INFORMACIÓ LOG-IN", JOptionPane.INFORMATION_MESSAGE);
+                Controller.getInstance().logClient(username);
+                Controller.getInstance().logUser(Controller.getInstance().getUser(username));
                 this.dispose();
             } else{
                 JOptionPane.showMessageDialog(this, "Log-in incorrectes", "ERROR LOGIN", JOptionPane.ERROR_MESSAGE);
